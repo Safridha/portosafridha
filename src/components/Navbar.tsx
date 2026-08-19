@@ -124,7 +124,7 @@ function Navbar() {
             <div className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl bg-[#171717] font-display text-sm font-semibold text-white transition-all duration-300 group-hover:bg-[#303030] group-hover:shadow-md group-hover:shadow-black/10">
 
               <span className="relative z-10">
-                SA
+                säa
               </span>
 
               {/* Small animated glow */}

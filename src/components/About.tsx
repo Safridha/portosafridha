@@ -5,20 +5,17 @@ const education = [
   {
     logo: '/education/ums.png',
     school: 'Universitas Muhammadiyah Surakarta',
-    degree: 'S1 Teknik Informatika',
-    year: '2022 — 2026',
+    degree: 'S1 Teknik Informatika · 2022 — 2026',
   },
   {
     logo: '/education/sma-batik-1.png',
     school: 'SMA Batik 1 Surakarta',
-    degree: 'Science / IPA',
-    year: '2019 — 2022',
+    degree: 'IPA · 2019 — 2022',
   },
   {
     logo: '/education/smp-9.png',
     school: 'SMP Negeri 9 Surakarta',
-    degree: 'Junior High School',
-    year: '2016 — 2019',
+    degree: '2016 — 2019',
   },
 ]
 
@@ -73,7 +70,7 @@ function About() {
         />
       </div>
 
-      <div className="relative mx-auto max-w-[1440px] px-6 py-24 sm:px-8 lg:px-12 lg:py-32">
+      <div className="relative mx-auto max-w-[1440px] px-6 py-20 sm:px-8 lg:px-12 lg:py-28">
 
         {/* Heading */}
         <motion.div
@@ -95,111 +92,87 @@ function About() {
         </motion.div>
 
         {/* About */}
-        <div className="mt-14 grid gap-10 lg:grid-cols-[0.65fr_1.35fr] lg:gap-20">
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mt-12 max-w-4xl"
+        >
+          <p className="text-lg leading-8 text-[#454340] sm:text-xl lg:text-2xl">
+            I&apos;m{' '}
+            <strong className="font-semibold text-[#171717]">
+              Safridha Audi
+            </strong>
+            , an Informatics Engineering graduate with an
+            interest in{' '}
+            <strong className="font-semibold text-[#171717]">
+              web development, full stack development,
+              and data analytics.
+            </strong>
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="border-l border-[#171717]/20 pl-5"
-          >
-            <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#8A8783]">
-              Who I am
-            </p>
+          <p className="mt-5 max-w-3xl text-sm leading-7 text-[#6B6966] sm:text-base">
+            I enjoy building web applications, developing
+            digital experiences, and working with data to
+            discover meaningful insights. I like understanding
+            how things work and turning ideas into solutions
+            that are functional, clear, and useful.
+          </p>
 
-            <p className="mt-4 max-w-xs text-sm leading-7 text-[#666360]">
-              An Informatics Engineering graduate who enjoys
-              turning ideas, technology, and data into useful
-              digital experiences.
-            </p>
-          </motion.div>
+          <p className="mt-3 max-w-3xl text-sm leading-7 text-[#6B6966] sm:text-base">
+            Beyond the technical side, I value problem solving,
+            collaboration, attention to detail, and continuously
+            learning new technologies.
+          </p>
+        </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <p className="max-w-4xl text-lg leading-8 text-[#454340] sm:text-xl lg:text-2xl">
-              I&apos;m{' '}
-              <strong className="font-semibold text-[#171717]">
-                Safridha Audi
-              </strong>
-              , an Informatics Engineering graduate with an
-              interest in{' '}
-              <strong className="font-semibold text-[#171717]">
-                web development, full stack development,
-                and data analytics.
-              </strong>
-            </p>
-
-            <p className="mt-6 max-w-3xl text-sm leading-7 text-[#6B6966] sm:text-base">
-              I enjoy building web applications, developing
-              digital experiences, and working with data to
-              discover meaningful insights. I like understanding
-              how things work and turning ideas into solutions
-              that are functional, clear, and useful.
-            </p>
-
-            <p className="mt-4 max-w-3xl text-sm leading-7 text-[#6B6966] sm:text-base">
-              Beyond the technical side, I value problem solving,
-              collaboration, attention to detail, and continuously
-              learning new technologies.
-            </p>
-          </motion.div>
-        </div>
-
-        {/* Education — ONE ROW */}
+        {/* Education */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="mt-20 border-t border-[#171717]/15 pt-7 lg:mt-24"
+          className="mt-14 border-t border-[#171717]/15 pt-6 lg:mt-16"
         >
-          <div className="flex items-center justify-between">
+          <div className="mb-5 flex items-center justify-between">
             <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-[#8A8783]">
               Education
             </p>
 
             <ArrowUpRight
-              size={16}
+              size={15}
               strokeWidth={1.5}
               className="text-[#8A8783]"
             />
           </div>
 
-          <div className="mt-7 grid gap-7 sm:grid-cols-3 sm:gap-5 lg:gap-10">
+          <div className="grid gap-5 sm:grid-cols-3 lg:gap-8">
             {education.map((item, index) => (
               <motion.div
                 key={item.school}
-                initial={{ opacity: 0, y: 15 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{
                   duration: 0.5,
-                  delay: index * 0.1,
+                  delay: index * 0.08,
                 }}
-                className="flex items-center gap-4"
+                className="flex items-center gap-3"
               >
-                {/* Logo */}
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center">
-                  <img
-                    src={item.logo}
-                    alt={`${item.school} logo`}
-                    className="h-9 w-9 object-contain"
-                  />
-                </div>
+                <img
+                  src={item.logo}
+                  alt={`${item.school} logo`}
+                  className="h-8 w-8 shrink-0 object-contain"
+                />
 
-                {/* Text */}
                 <div className="min-w-0">
                   <h4 className="truncate font-display text-sm font-semibold text-[#171717]">
                     {item.school}
                   </h4>
 
-                  <p className="mt-1 text-xs text-[#77736F]">
-                    {item.degree} · {item.year}
+                  <p className="mt-0.5 text-[11px] text-[#77736F]">
+                    {item.degree}
                   </p>
                 </div>
               </motion.div>
