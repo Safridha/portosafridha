@@ -1,634 +1,397 @@
 import { useState } from 'react'
-import { motion } from 'framer-motion'
 import {
-  FolderKanban,
-  BriefcaseBusiness,
-  Users,
-  Award,
-  ChevronDown,
+  ArrowDown,
   ExternalLink,
+  Award,
+  BriefcaseBusiness,
+  FolderKanban,
+  Users,
 } from 'lucide-react'
 
-type Project = {
-  title: string
-  category: string
-  organization: string
-  period: string
-  description: string
-  technologies: string[]
-  link?: string
-}
+type SectionId =
+  | 'projects'
+  | 'experience'
+  | 'organization'
+  | 'certificates'
 
-type Experience = {
-  position: string
-  organization: string
-  type: string
-  period: string
-  location?: string
-  description: string[]
-}
-
-type Organization = {
-  position: string
-  organization: string
-  period: string
-  description: string[]
-}
-
-type Certification = {
-  title: string
-  issuer: string
-  period: string
-  description: string
-  link?: string
-}
-
-const projects: Project[] = [
+const sections = [
   {
-    title: 'Sistem Administrasi BPKPAD',
-    category: 'WEB APPLICATION',
-    organization:
-      'Badan Pengelolaan Keuangan Pendapatan dan Aset Daerah Kabupaten Sukoharjo',
-    period: 'Maret 2025 — April 2025',
+    id: 'projects' as SectionId,
+    title: 'Proyek',
     description:
-      'Sistem administrasi berbasis web yang dikembangkan untuk membantu proses administrasi, pengelolaan data, pengajuan, tracking, dan manajemen dokumen di lingkungan BPKPAD.',
-    technologies: ['PHP', 'Laravel', 'CSS', 'MySQL'],
+      'Beberapa website dan sistem yang saya kerjakan dalam pengembangan web dan digital.',
+    icon: FolderKanban,
+  },
+  {
+    id: 'experience' as SectionId,
+    title: 'Experience',
+    description:
+      'Pengalaman yang saya dapatkan melalui pekerjaan, magang, dan aktivitas profesional.',
+    icon: BriefcaseBusiness,
+  },
+  {
+    id: 'organization' as SectionId,
+    title: 'Organisasi',
+    description:
+      'Pengalaman berorganisasi dan berkontribusi dalam kegiatan kemahasiswaan.',
+    icon: Users,
+  },
+  {
+    id: 'certificates' as SectionId,
+    title: 'Sertifikasi',
+    description:
+      'Pelatihan dan pembelajaran yang mendukung perkembangan kemampuan teknis saya.',
+    icon: Award,
+  },
+]
+
+const projects = [
+  {
+    title: 'BPKPAD',
+    year: '2025 — 2026',
+    description:
+      'Mengembangkan sistem informasi untuk membantu proses administrasi di lingkungan BPKPAD. Sistem dirancang untuk membantu pengelolaan data dan proses administrasi agar lebih terstruktur dan efisien.',
+    stack: 'PHP · Laravel · CSS · MySQL',
   },
   {
     title: '2 Audi Digital Printing',
-    category: 'LANDING PAGE',
-    organization: '2 Audi Digital Printing',
-    period: '2026',
+    year: '2026',
     description:
-      'Website landing page yang dikembangkan untuk memberikan informasi mengenai layanan digital printing, produk, dan kebutuhan pelanggan secara lebih mudah dan terstruktur.',
-    technologies: ['React', 'Vite', 'Tailwind CSS', 'JavaScript'],
+      'Mengembangkan website landing page untuk 2 Audi Digital Printing sebagai media informasi layanan, produk, dan identitas digital perusahaan.',
+    stack: 'React · Vite · Tailwind CSS',
     link: 'https://audi-digital-printing.vercel.app/',
   },
   {
-    title: 'QCF — Qur’anic Corporate Forum',
-    category: 'CORPORATE WEBSITE',
-    organization: 'Qur’anic Corporate Forum',
-    period: '2026',
+    title: 'Qurrota',
+    year: '2026',
     description:
-      'Website untuk memperkenalkan Qur’anic Corporate Forum (QCF), sebuah platform yang berfokus pada pengembangan budaya organisasi, kepemimpinan, sumber daya manusia, dan transformasi digital berbasis nilai-nilai Qur’ani.',
-    technologies: ['React', 'Vite', 'Tailwind CSS', 'JavaScript'],
-    link: 'https://qurota.id/',
+      'Mengembangkan website untuk Qurrota sebagai platform digital yang berkaitan dengan QCF (Qurrota Corporate Forum), dengan fokus pada penyajian informasi program dan layanan secara terstruktur.',
+    stack: 'Web Development',
+    link: 'https://qurota.id',
   },
   {
     title: 'Desafar',
-    category: 'UMROH WEBSITE',
-    organization: 'Desafar',
-    period: '2026',
+    year: '2026',
     description:
-      'Website yang dikembangkan untuk mendukung kebutuhan informasi dan layanan perjalanan umroh, termasuk penyajian informasi program dan berbagai kebutuhan digital Desafar.',
-    technologies: ['Web Development', 'React', 'Vite'],
+      'Mengembangkan website untuk Desafar sebagai media informasi dan digital presence untuk layanan perjalanan umroh.',
+    stack: 'Web Development',
     link: 'https://desafar.vercel.app/',
   },
 ]
 
-const experiences: Experience[] = [
+const experiences = [
   {
-    position: 'Pengembang Web',
-    organization:
-      'Badan Pengelolaan Keuangan Pendapatan dan Aset Daerah Kabupaten Sukoharjo',
-    type: 'Apprenticeship',
-    period: 'Maret 2025 — April 2025',
-    location: 'Sukoharjo, Jawa Tengah · On-site',
-    description: [
-      'Mengembangkan aplikasi web untuk mendukung administrasi surat permohonan pajak daerah menggunakan PHP, CSS, dan Laravel.',
-      'Merancang dan mengimplementasikan fitur pengajuan, tracking, dan manajemen dokumen.',
-      'Berkolaborasi dengan tim internal dalam analisis kebutuhan dan peningkatan user experience.',
-      'Melakukan pengujian sistem untuk memastikan fungsionalitas berjalan optimal.',
-      'Melakukan maintenance dan perbaikan bug untuk menjaga performa aplikasi.',
-    ],
+    title: 'Magang — BPKPAD',
+    year: '2025 — 2026',
+    description:
+      'Mengembangkan dan membantu pengelolaan sistem informasi untuk mendukung kebutuhan administrasi dan pengolahan data di lingkungan BPKPAD.',
   },
   {
-    position: 'Analis Data',
-    organization: 'RevoU',
-    type: 'Apprenticeship / Studi Independen',
-    period: 'September 2024 — Desember 2024',
-    location: 'Remote',
-    description: [
-      'Melakukan analisis data penjualan secara end-to-end, mulai dari data cleaning hingga visualisasi.',
-      'Mengolah dan memvisualisasikan data menggunakan Microsoft Excel dan Power BI.',
-      'Mengidentifikasi pola, tren, dan peluang dari data untuk menghasilkan insight bisnis.',
-      'Mengembangkan rekomendasi strategis berbasis data untuk mendukung pengambilan keputusan.',
-      'Berkontribusi dalam peningkatan keberlanjutan dan performa bisnis melalui analisis data.',
-    ],
+    title: 'Data Analysis',
+    year: '2025 — 2026',
+    description:
+      'Mengolah, membersihkan, dan menganalisis data untuk menghasilkan informasi yang lebih mudah dipahami serta mendukung kebutuhan pengambilan keputusan.',
   },
 ]
 
-const organizations: Organization[] = [
+const organizations = [
   {
-    position: 'Sekretaris Bidang Immawati',
-    organization: 'Ikatan Mahasiswa Muhammadiyah (IMM) Adam Malik',
-    period: '2022 — 2024',
-    description: [
-      'Mendukung administrasi dan koordinasi kegiatan bidang Immawati.',
-      'Mengelola dokumentasi dan kebutuhan administrasi kegiatan organisasi.',
-      'Berkolaborasi dengan anggota bidang dalam pelaksanaan program kerja.',
-    ],
+    title: 'Sekretaris Bidang Immawati — IMM Adam Malik',
+    year: '2022 — 2024',
+    description:
+      'Berperan sebagai sekretaris bidang Immawati dalam Ikatan Mahasiswa Muhammadiyah Adam Malik, dengan tanggung jawab dalam administrasi, dokumentasi, dan koordinasi kegiatan bidang.',
   },
   {
-    position: 'Staff Divisi Kaderisasi',
-    organization: 'Himpunan Mahasiswa Teknik Informatika UMS',
-    period: '2022 — 2024',
-    description: [
-      'Berperan dalam kegiatan dan program kerja Divisi Kaderisasi.',
-      'Mendukung pelaksanaan kegiatan organisasi dan pengembangan anggota.',
-      'Berkolaborasi dengan pengurus dan anggota dalam menjalankan program kerja.',
-    ],
+    title: 'HMTI UMS',
+    year: '2022 — 2024',
+    description:
+      'Berpartisipasi dalam kegiatan organisasi mahasiswa Teknik Informatika dan berbagai aktivitas kemahasiswaan.',
   },
 ]
 
-const certifications: Certification[] = [
+const certificates = [
   {
     title: 'Pemrograman Back-End',
-    issuer: 'Lembaga Pendidikan Solocom',
-    period: 'Agustus 2024 — Januari 2025',
+    issuer: 'SOLOCOM',
     description:
-      'Mengikuti pelatihan Pemrograman Back-End dengan fokus pada pengembangan aplikasi web sisi server. Mempelajari dasar hingga implementasi pembuatan API, pengelolaan database, serta logika backend untuk membangun sistem yang efisien dan terstruktur.',
+      'Mengikuti pelatihan Pemrograman Back-End dengan fokus pada pengembangan aplikasi web sisi server, pembuatan API, pengelolaan database, serta logika backend untuk membangun sistem yang efisien dan terstruktur.',
   },
   {
-    title: 'Create Your First Python Program',
+    title: 'Python Programming',
     issuer: 'Coursera Project Network',
-    period: 'Februari 2023',
     description:
-      'Menyelesaikan proyek online melalui Coursera Project Network dengan fokus pada dasar pemrograman Python, termasuk pembuatan program sederhana, penggunaan variabel, serta penerapan logika dasar dalam pengembangan aplikasi.',
+      'Menyelesaikan proyek online dengan fokus pada dasar pemrograman Python, termasuk pembuatan program sederhana, penggunaan variabel, dan penerapan logika dasar dalam pengembangan aplikasi.',
     link: 'https://www.coursera.org/account/accomplishments/verify/ZFCH7LFQHBDX',
+  },
+  {
+    title: 'Studi Independen',
+    issuer: 'RevoU',
+    description:
+      'Mengikuti program Studi Independen di RevoU untuk mengembangkan kemampuan dan wawasan dalam bidang digital serta pengembangan profesional.',
   },
 ]
 
 function Work() {
-  const [openSection, setOpenSection] = useState<string | null>(null)
+  // Semua section tertutup ketika website pertama kali dibuka
+  const [openSection, setOpenSection] =
+    useState<SectionId | null>(null)
 
-  const toggleSection = (section: string) => {
+  // Accordion:
+  // klik section tertutup → buka
+  // klik section yang sedang terbuka → tutup
+  // klik section lain → section sebelumnya otomatis tertutup
+  const handleToggle = (id: SectionId) => {
     setOpenSection((current) =>
-      current === section ? null : section
+      current === id ? null : id
     )
   }
 
   return (
     <section
       id="work"
-      className="relative w-full bg-[#f7f7f5] text-[#171717]"
+      className="relative overflow-hidden bg-[#EAE9E7] text-[#171717]"
     >
-      <div className="mx-auto max-w-[1500px] px-6 py-20 md:px-12 lg:px-20">
+      {/* Background Grid */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-50"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(23,23,23,.035) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(23,23,23,.035) 1px, transparent 1px)
+          `,
+          backgroundSize: '60px 60px',
+        }}
+      />
+
+      <div className="relative mx-auto max-w-[1440px] px-6 py-20 sm:px-8 lg:px-12 lg:py-28">
 
         {/* HEADER */}
-<motion.div
-  initial={{ opacity: 0, y: 20 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true }}
-  transition={{ duration: 0.6 }}
->
-  <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#8A8783]">
-    Work
-  </p>
+        <div className="mb-12 border-t border-[#171717]/15 pt-6 lg:mb-16">
+          <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#8A8783]">
+            Work
+          </p>
 
-  <h2 className="mt-5 max-w-4xl font-display text-[clamp(3rem,6vw,5.8rem)] font-semibold leading-[.88] tracking-[-.07em]">
-    Selected
-    <span className="block text-[#5C5A58]">
-      works & experiences.
-    </span>
-  </h2>
+          <h2 className="mt-5 max-w-4xl font-display text-[clamp(3rem,6vw,5.8rem)] font-semibold leading-[0.88] tracking-[-0.07em]">
+            What I&apos;ve worked on.
+          </h2>
 
-  <p className="mt-8 max-w-3xl text-sm leading-7 text-[#6B6966] sm:text-base">
-    Proyek, pengalaman, organisasi, dan sertifikasi yang membentuk
-    perjalanan saya di bidang teknologi dan pengembangan digital.
-  </p>
-</motion.div>
+          <p className="mt-6 max-w-2xl text-sm leading-7 text-[#6B6966] sm:text-base">
+            Proyek, pengalaman, organisasi, dan sertifikasi
+            yang membentuk perjalanan saya di bidang teknologi
+            dan pengembangan digital.
+          </p>
+        </div>
 
         {/* ACCORDION */}
-        <div className="border-t border-[#d9d9d6]">
+        <div className="border-t border-[#171717]/15">
+          {sections.map((section) => {
+            const Icon = section.icon
+            const isOpen = openSection === section.id
 
-          {/* ================= PROJECTS ================= */}
-          <div className="border-b border-[#d9d9d6]">
-            <button
-              type="button"
-              onClick={() => toggleSection('projects')}
-              className="group flex w-full items-center justify-between py-7 text-left"
-              aria-expanded={openSection === 'projects'}
-            >
-              <div className="flex items-center gap-5">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center bg-[#171717] text-white">
-                  <FolderKanban size={19} strokeWidth={1.5} />
-                </div>
+            return (
+              <div
+                key={section.id}
+                className="border-b border-[#171717]/15"
+              >
+                {/* SECTION BUTTON */}
+                <button
+                  type="button"
+                  onClick={() => handleToggle(section.id)}
+                  aria-expanded={isOpen}
+                  className="group flex w-full items-center justify-between gap-5 py-6 text-left sm:py-7"
+                >
+                  <div className="flex min-w-0 items-center gap-4">
 
-                <div>
-                  <h3 className="text-2xl font-medium tracking-[-0.02em]">
-                    Proyek
-                  </h3>
-
-                  <p className="mt-1 text-sm text-[#777773]">
-                    Website dan sistem yang pernah saya bangun.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center border border-[#d5d5d1]">
-                <ChevronDown
-                  size={18}
-                  strokeWidth={1.5}
-                  className={`transition-transform duration-300 ${
-                    openSection === 'projects'
-                      ? 'rotate-180'
-                      : ''
-                  }`}
-                />
-              </div>
-            </button>
-
-            {openSection === 'projects' && (
-              <div className="pb-8">
-                {projects.map((project, index) => (
-                  <article
-                    key={project.title}
-                    className="border-t border-[#e1e1de] py-8 md:py-10"
-                  >
-                    <div className="grid gap-8 lg:grid-cols-[80px_minmax(0,1fr)_280px]">
-
-                      {/* NUMBER */}
-                      <div className="hidden pt-2 text-[10px] tracking-[0.3em] text-[#999995] lg:block">
-                        {String(index + 1).padStart(2, '0')}
-                      </div>
-
-                      {/* MAIN INFORMATION */}
-                      <div>
-                        <div className="mb-3 flex flex-wrap items-center gap-3 text-[9px] uppercase tracking-[0.3em] text-[#92928e]">
-                          <span>
-                            Project {String(index + 1).padStart(2, '0')}
-                          </span>
-
-                          <span className="h-1 w-1 rounded-full bg-[#999995]" />
-
-                          <span>{project.category}</span>
-                        </div>
-
-                        <h4 className="text-3xl font-medium tracking-[-0.035em] md:text-4xl">
-                          {project.title}
-                        </h4>
-
-                        <p className="mt-2 text-sm text-[#777773]">
-                          {project.organization}
-                          <span className="mx-2">·</span>
-                          {project.period}
-                        </p>
-
-                        <p className="mt-6 max-w-3xl text-[15px] leading-7 text-[#62625f]">
-                          {project.description}
-                        </p>
-
-                        {/* TECHNOLOGIES */}
-                        <div className="mt-6 flex flex-wrap gap-2">
-                          {project.technologies.map((technology) => (
-                            <span
-                              key={technology}
-                              className="border border-[#d8d8d4] px-3 py-2 text-[9px] uppercase tracking-[0.2em] text-[#777773]"
-                            >
-                              {technology}
-                            </span>
-                          ))}
-                        </div>
-
-                        {/* WEBSITE */}
-                        <div className="mt-6">
-                          {project.link ? (
-                            <a
-                              href={project.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="
-                                inline-flex
-                                items-center
-                                gap-2
-                                border
-                                border-[#cfcfcb]
-                                bg-[#f7f7f5]
-                                px-4
-                                py-2.5
-                                text-xs
-                                text-[#555552]
-                                transition-all
-                                duration-200
-                                ease-out
-                                hover:-translate-y-0.5
-                                hover:border-[#bcbcb8]
-                                hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)]
-                                active:translate-y-0
-                                active:shadow-none
-                              "
-                            >
-                              Lihat Website
-
-                              <ExternalLink
-                                size={13}
-                                strokeWidth={1.5}
-                              />
-                            </a>
-                          ) : (
-                            <span className="text-xs italic text-[#9a9a96]">
-                              Website belum tersedia
-                            </span>
-                          )}
-                        </div>
-                      </div>
+                    {/* Icon */}
+                    <div
+                      className={`flex h-10 w-10 shrink-0 items-center justify-center border transition-transform duration-200 ${
+                        isOpen
+                          ? 'border-[#171717] bg-[#171717] text-white'
+                          : 'border-[#171717]/10 bg-white text-[#555250] group-hover:-translate-y-0.5 group-hover:border-[#171717]/30'
+                      }`}
+                    >
+                      <Icon
+                        size={17}
+                        strokeWidth={1.5}
+                      />
                     </div>
-                  </article>
-                ))}
-              </div>
-            )}
-          </div>
 
-          {/* ================= EXPERIENCE ================= */}
-          <div className="border-b border-[#d9d9d6]">
-            <button
-              type="button"
-              onClick={() => toggleSection('experience')}
-              className="group flex w-full items-center justify-between py-7 text-left"
-              aria-expanded={openSection === 'experience'}
-            >
-              <div className="flex items-center gap-5">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center bg-[#171717] text-white">
-                  <BriefcaseBusiness size={19} strokeWidth={1.5} />
-                </div>
+                    {/* Title */}
+                    <div className="min-w-0">
+                      <h3 className="font-display text-lg font-semibold sm:text-xl">
+                        {section.title}
+                      </h3>
 
-                <div>
-                  <h3 className="text-2xl font-medium tracking-[-0.02em]">
-                    Pengalaman
-                  </h3>
-
-                  <p className="mt-1 text-sm text-[#777773]">
-                    Pengalaman kerja dan apprenticeship.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center border border-[#d5d5d1]">
-                <ChevronDown
-                  size={18}
-                  strokeWidth={1.5}
-                  className={`transition-transform duration-300 ${
-                    openSection === 'experience'
-                      ? 'rotate-180'
-                      : ''
-                  }`}
-                />
-              </div>
-            </button>
-
-            {openSection === 'experience' && (
-              <div className="pb-8">
-                {experiences.map((experience, index) => (
-                  <article
-                    key={`${experience.position}-${experience.organization}`}
-                    className="border-t border-[#e1e1de] py-8"
-                  >
-                    <div className="grid gap-6 md:grid-cols-[80px_minmax(0,1fr)]">
-
-                      <div className="text-[10px] tracking-[0.3em] text-[#999995]">
-                        {String(index + 1).padStart(2, '0')}
-                      </div>
-
-                      <div>
-                        <div className="flex flex-wrap items-center gap-3">
-                          <h4 className="text-2xl font-medium tracking-[-0.025em]">
-                            {experience.position}
-                          </h4>
-
-                          <span className="text-[9px] uppercase tracking-[0.25em] text-[#999995]">
-                            {experience.type}
-                          </span>
-                        </div>
-
-                        <p className="mt-2 text-sm text-[#777773]">
-                          {experience.organization}
-                        </p>
-
-                        <p className="mt-1 text-sm text-[#999995]">
-                          {experience.period}
-
-                          {experience.location && (
-                            <>
-                              <span className="mx-2">·</span>
-                              {experience.location}
-                            </>
-                          )}
-                        </p>
-
-                        <ul className="mt-6 max-w-4xl space-y-2 text-[15px] leading-7 text-[#62625f]">
-                          {experience.description.map((item) => (
-                            <li
-                              key={item}
-                              className="flex gap-3"
-                            >
-                              <span className="mt-[11px] h-1 w-1 shrink-0 rounded-full bg-[#777773]" />
-                              <span>{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                      <p className="mt-1 max-w-xl text-xs leading-5 text-[#77736F] sm:text-sm">
+                        {section.description}
+                      </p>
                     </div>
-                  </article>
-                ))}
-              </div>
-            )}
-          </div>
+                  </div>
 
-          {/* ================= ORGANIZATION ================= */}
-          <div className="border-b border-[#d9d9d6]">
-            <button
-              type="button"
-              onClick={() => toggleSection('organization')}
-              className="group flex w-full items-center justify-between py-7 text-left"
-              aria-expanded={openSection === 'organization'}
-            >
-              <div className="flex items-center gap-5">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center bg-[#171717] text-white">
-                  <Users size={19} strokeWidth={1.5} />
-                </div>
-
-                <div>
-                  <h3 className="text-2xl font-medium tracking-[-0.02em]">
-                    Organisasi
-                  </h3>
-
-                  <p className="mt-1 text-sm text-[#777773]">
-                    Kegiatan organisasi dan kontribusi selama perkuliahan.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center border border-[#d5d5d1]">
-                <ChevronDown
-                  size={18}
-                  strokeWidth={1.5}
-                  className={`transition-transform duration-300 ${
-                    openSection === 'organization'
-                      ? 'rotate-180'
-                      : ''
-                  }`}
-                />
-              </div>
-            </button>
-
-            {openSection === 'organization' && (
-              <div className="pb-8">
-                {organizations.map((organization, index) => (
-                  <article
-                    key={`${organization.position}-${organization.organization}`}
-                    className="border-t border-[#e1e1de] py-8"
+                  {/* Arrow */}
+                  <span
+                    className={`flex h-8 w-8 shrink-0 items-center justify-center border border-[#171717]/10 transition-transform duration-200 ${
+                      isOpen ? 'rotate-180' : ''
+                    }`}
                   >
-                    <div className="grid gap-6 md:grid-cols-[80px_minmax(0,1fr)]">
+                    <ArrowDown
+                      size={15}
+                      strokeWidth={1.5}
+                    />
+                  </span>
+                </button>
 
-                      <div className="text-[10px] tracking-[0.3em] text-[#999995]">
-                        {String(index + 1).padStart(2, '0')}
+                {/* DROPDOWN CONTENT */}
+                {isOpen && (
+                  <div className="pb-7 sm:pl-14">
+
+                    {/* PROJECTS */}
+                    {section.id === 'projects' && (
+                      <div className="space-y-4">
+                        {projects.map((project) => (
+                          <article
+                            key={project.title}
+                            className="border border-[#171717]/10 bg-white/60 p-5 sm:p-6"
+                          >
+                            <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+
+                              <div className="min-w-0">
+                                <div className="flex flex-wrap items-center gap-3">
+                                  <h4 className="font-display text-base font-semibold sm:text-lg">
+                                    {project.title}
+                                  </h4>
+
+                                  <span className="font-mono text-[8px] uppercase tracking-[0.12em] text-[#999591]">
+                                    {project.year}
+                                  </span>
+                                </div>
+
+                                <p className="mt-3 max-w-3xl text-sm leading-6 text-[#6B6966]">
+                                  {project.description}
+                                </p>
+
+                                <p className="mt-4 font-mono text-[8px] uppercase tracking-[0.12em] text-[#8A8783]">
+                                  {project.stack}
+                                </p>
+                              </div>
+
+                              {project.link && (
+                                <a
+                                  href={project.link}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex w-fit shrink-0 items-center gap-2 border border-[#171717]/10 px-3 py-2 font-mono text-[8px] uppercase tracking-[0.12em] text-[#555250] transition-transform duration-200 hover:-translate-y-0.5 hover:border-[#171717]/30"
+                                >
+                                  Website
+                                  <ExternalLink size={11} />
+                                </a>
+                              )}
+                            </div>
+                          </article>
+                        ))}
                       </div>
+                    )}
 
-                      <div>
-                        <h4 className="text-2xl font-medium tracking-[-0.025em]">
-                          {organization.position}
-                        </h4>
+                    {/* EXPERIENCE */}
+                    {section.id === 'experience' && (
+                      <div className="space-y-4">
+                        {experiences.map((item) => (
+                          <article
+                            key={item.title}
+                            className="border border-[#171717]/10 bg-white/60 p-5 sm:p-6"
+                          >
+                            <div className="flex flex-wrap items-center gap-3">
+                              <h4 className="font-display text-base font-semibold sm:text-lg">
+                                {item.title}
+                              </h4>
 
-                        <p className="mt-2 text-sm text-[#777773]">
-                          {organization.organization}
-                        </p>
+                              <span className="font-mono text-[8px] uppercase tracking-[0.12em] text-[#999591]">
+                                {item.year}
+                              </span>
+                            </div>
 
-                        <p className="mt-1 text-sm text-[#999995]">
-                          {organization.period}
-                        </p>
-
-                        <ul className="mt-6 max-w-4xl space-y-2 text-[15px] leading-7 text-[#62625f]">
-                          {organization.description.map((item) => (
-                            <li
-                              key={item}
-                              className="flex gap-3"
-                            >
-                              <span className="mt-[11px] h-1 w-1 shrink-0 rounded-full bg-[#777773]" />
-                              <span>{item}</span>
-                            </li>
-                          ))}
-                        </ul>
+                            <p className="mt-3 max-w-3xl text-sm leading-6 text-[#6B6966]">
+                              {item.description}
+                            </p>
+                          </article>
+                        ))}
                       </div>
-                    </div>
-                  </article>
-                ))}
-              </div>
-            )}
-          </div>
+                    )}
 
-          {/* ================= CERTIFICATIONS ================= */}
-          <div className="border-b border-[#d9d9d6]">
-            <button
-              type="button"
-              onClick={() => toggleSection('certifications')}
-              className="group flex w-full items-center justify-between py-7 text-left"
-              aria-expanded={openSection === 'certifications'}
-            >
-              <div className="flex items-center gap-5">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center bg-[#171717] text-white">
-                  <Award size={19} strokeWidth={1.5} />
-                </div>
+                    {/* ORGANIZATION */}
+                    {section.id === 'organization' && (
+                      <div className="space-y-4">
+                        {organizations.map((item) => (
+                          <article
+                            key={item.title}
+                            className="border border-[#171717]/10 bg-white/60 p-5 sm:p-6"
+                          >
+                            <div className="flex flex-wrap items-center gap-3">
+                              <h4 className="font-display text-base font-semibold sm:text-lg">
+                                {item.title}
+                              </h4>
 
-                <div>
-                  <h3 className="text-2xl font-medium tracking-[-0.02em]">
-                    Sertifikasi
-                  </h3>
+                              <span className="font-mono text-[8px] uppercase tracking-[0.12em] text-[#999591]">
+                                {item.year}
+                              </span>
+                            </div>
 
-                  <p className="mt-1 text-sm text-[#777773]">
-                    Sertifikasi dan pelatihan yang pernah diselesaikan.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center border border-[#d5d5d1]">
-                <ChevronDown
-                  size={18}
-                  strokeWidth={1.5}
-                  className={`transition-transform duration-300 ${
-                    openSection === 'certifications'
-                      ? 'rotate-180'
-                      : ''
-                  }`}
-                />
-              </div>
-            </button>
-
-            {openSection === 'certifications' && (
-              <div className="pb-8">
-                {certifications.map((certification, index) => (
-                  <article
-                    key={certification.title}
-                    className="border-t border-[#e1e1de] py-8"
-                  >
-                    <div className="grid gap-6 md:grid-cols-[80px_minmax(0,1fr)]">
-
-                      <div className="text-[10px] tracking-[0.3em] text-[#999995]">
-                        {String(index + 1).padStart(2, '0')}
+                            <p className="mt-3 max-w-3xl text-sm leading-6 text-[#6B6966]">
+                              {item.description}
+                            </p>
+                          </article>
+                        ))}
                       </div>
+                    )}
 
-                      <div>
-                        <h4 className="text-2xl font-medium tracking-[-0.025em]">
-                          {certification.title}
-                        </h4>
+                    {/* CERTIFICATES */}
+                    {section.id === 'certificates' && (
+                      <div className="space-y-4">
+                        {certificates.map((item) => (
+                          <article
+                            key={item.title}
+                            className="border border-[#171717]/10 bg-white/60 p-5 sm:p-6"
+                          >
+                            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
 
-                        <p className="mt-2 text-sm text-[#777773]">
-                          {certification.issuer}
-                        </p>
+                              <div>
+                                <h4 className="font-display text-base font-semibold sm:text-lg">
+                                  {item.title}
+                                </h4>
 
-                        <p className="mt-1 text-sm text-[#999995]">
-                          {certification.period}
-                        </p>
+                                <p className="mt-1 font-mono text-[8px] uppercase tracking-[0.12em] text-[#999591]">
+                                  {item.issuer}
+                                </p>
+                              </div>
 
-                        <p className="mt-6 max-w-4xl text-[15px] leading-7 text-[#62625f]">
-                          {certification.description}
-                        </p>
+                              {item.link && (
+                                <a
+                                  href={item.link}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex w-fit shrink-0 items-center gap-2 border border-[#171717]/10 px-3 py-2 font-mono text-[8px] uppercase tracking-[0.12em] text-[#555250] transition-transform duration-200 hover:-translate-y-0.5 hover:border-[#171717]/30"
+                                >
+                                  Credential
+                                  <ExternalLink size={11} />
+                                </a>
+                              )}
+                            </div>
 
-                        {certification.link && (
-                          <div className="mt-6">
-                            <a
-                              href={certification.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="
-                                inline-flex
-                                items-center
-                                gap-2
-                                border
-                                border-[#cfcfcb]
-                                bg-[#f7f7f5]
-                                px-4
-                                py-2.5
-                                text-xs
-                                text-[#555552]
-                                transition-all
-                                duration-200
-                                ease-out
-                                hover:-translate-y-0.5
-                                hover:border-[#bcbcb8]
-                                hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)]
-                                active:translate-y-0
-                                active:shadow-none
-                              "
-                            >
-                              Lihat Credential
-
-                              <ExternalLink
-                                size={13}
-                                strokeWidth={1.5}
-                              />
-                            </a>
-                          </div>
-                        )}
+                            <p className="mt-3 max-w-3xl text-sm leading-6 text-[#6B6966]">
+                              {item.description}
+                            </p>
+                          </article>
+                        ))}
                       </div>
-                    </div>
-                  </article>
-                ))}
-              </div>
-            )}
-          </div>
+                    )}
 
+                  </div>
+                )}
+              </div>
+            )
+          })}
         </div>
+
       </div>
     </section>
   )
