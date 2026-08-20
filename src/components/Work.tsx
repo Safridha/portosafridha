@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from "react";
 import {
   ArrowDown,
   ExternalLink,
@@ -6,145 +6,151 @@ import {
   BriefcaseBusiness,
   FolderKanban,
   Users,
-} from 'lucide-react'
+} from "lucide-react";
 
-type SectionId =
-  | 'projects'
-  | 'experience'
-  | 'organization'
-  | 'certificates'
+type SectionId = "projects" | "experience" | "organization" | "certificates";
 
 const sections = [
   {
-    id: 'projects' as SectionId,
-    title: 'Proyek',
+    id: "projects" as SectionId,
+    title: "Proyek",
     description:
-      'Beberapa website dan sistem yang saya kerjakan dalam pengembangan web dan digital.',
+      "Beberapa website dan sistem yang saya kerjakan dalam pengembangan web dan digital.",
     icon: FolderKanban,
   },
   {
-    id: 'experience' as SectionId,
-    title: 'Experience',
+    id: "experience" as SectionId,
+    title: "Experience",
     description:
-      'Pengalaman yang saya dapatkan melalui pekerjaan, magang, dan aktivitas profesional.',
+      "Pengalaman yang saya dapatkan melalui pekerjaan, magang, dan aktivitas profesional.",
     icon: BriefcaseBusiness,
   },
   {
-    id: 'organization' as SectionId,
-    title: 'Organisasi',
+    id: "organization" as SectionId,
+    title: "Organisasi",
     description:
-      'Pengalaman berorganisasi dan berkontribusi dalam kegiatan kemahasiswaan.',
+      "Pengalaman berorganisasi dan berkontribusi dalam kegiatan kemahasiswaan.",
     icon: Users,
   },
   {
-    id: 'certificates' as SectionId,
-    title: 'Sertifikasi',
+    id: "certificates" as SectionId,
+    title: "Sertifikasi",
     description:
-      'Pelatihan dan pembelajaran yang mendukung perkembangan kemampuan teknis saya.',
+      "Pelatihan dan pembelajaran yang mendukung perkembangan kemampuan teknis saya.",
     icon: Award,
   },
-]
+];
+
+/* =========================
+   PROJECTS
+========================= */
 
 const projects = [
   {
-    title: 'BPKPAD',
-    year: '2025 — 2026',
+    title: "BPKPAD",
+    year: "2025 — 2026",
     description:
-      'Mengembangkan sistem informasi untuk membantu proses administrasi di lingkungan BPKPAD. Sistem dirancang untuk membantu pengelolaan data dan proses administrasi agar lebih terstruktur dan efisien.',
-    stack: 'PHP · Laravel · CSS · MySQL',
+      "Mengembangkan dan membantu pengelolaan sistem informasi untuk mendukung kebutuhan administrasi dan pengolahan data di lingkungan BPKPAD. Sistem dibuat untuk membantu proses administrasi agar lebih terstruktur dan efisien.",
+    stack: "PHP · Laravel · CSS · MySQL",
   },
   {
-    title: '2 Audi Digital Printing',
-    year: '2026',
+    title: "2 Audi Digital Printing",
+    year: "2026",
     description:
-      'Mengembangkan website landing page untuk 2 Audi Digital Printing sebagai media informasi layanan, produk, dan identitas digital perusahaan.',
-    stack: 'React · Vite · Tailwind CSS',
-    link: 'https://audi-digital-printing.vercel.app/',
+      "Mengembangkan website landing page untuk 2 Audi Digital Printing sebagai media informasi layanan, produk, dan identitas digital perusahaan.",
+    stack: "React · Vite · Tailwind CSS",
+    link: "https://audi-digital-printing.vercel.app/",
   },
   {
-    title: 'Qurrota',
-    year: '2026',
+    title: "Qurrota",
+    year: "2026",
     description:
-      'Mengembangkan website untuk Qurrota sebagai platform digital yang berkaitan dengan QCF (Qurrota Corporate Forum), dengan fokus pada penyajian informasi program dan layanan secara terstruktur.',
-    stack: 'Web Development',
-    link: 'https://qurota.id',
+      "Mengembangkan website untuk Qurrota sebagai platform digital yang berkaitan dengan QCF (Qurrota Corporate Forum), dengan fokus pada penyajian informasi program dan layanan secara terstruktur.",
+    stack: "Web Development",
+    link: "https://qurota.id",
   },
   {
-    title: 'Desafar',
-    year: '2026',
+    title: "Desafar",
+    year: "2026",
     description:
-      'Mengembangkan website untuk Desafar sebagai media informasi dan digital presence untuk layanan perjalanan umroh.',
-    stack: 'Web Development',
-    link: 'https://desafar.vercel.app/',
+      "Mengembangkan website untuk Desafar sebagai media informasi dan digital presence untuk layanan perjalanan umroh.",
+    stack: "Web Development",
+    link: "https://desafar.vercel.app/",
   },
-]
+];
+
+/* =========================
+   EXPERIENCE
+========================= */
 
 const experiences = [
   {
-    title: 'Magang — BPKPAD',
-    year: '2025 — 2026',
+    title: "Magang — BPKPAD",
+    year: "2025 — 2026",
     description:
-      'Mengembangkan dan membantu pengelolaan sistem informasi untuk mendukung kebutuhan administrasi dan pengolahan data di lingkungan BPKPAD.',
+      "Mengembangkan dan membantu pengelolaan sistem informasi untuk mendukung kebutuhan administrasi dan pengolahan data di lingkungan BPKPAD.",
   },
   {
-    title: 'Data Analysis',
-    year: '2025 — 2026',
+    title: "Studi Independen — RevoU",
+    year: "2024",
     description:
-      'Mengolah, membersihkan, dan menganalisis data untuk menghasilkan informasi yang lebih mudah dipahami serta mendukung kebutuhan pengambilan keputusan.',
+      "Mengikuti program Studi Independen di RevoU sebagai bagian dari pengembangan kemampuan di bidang digital. Program ini memberikan pengalaman belajar berbasis proyek serta memperluas pemahaman mengenai dunia digital dan profesional.",
   },
-]
+];
+
+/* =========================
+   ORGANIZATION
+========================= */
 
 const organizations = [
   {
-    title: 'Sekretaris Bidang Immawati — IMM Adam Malik',
-    year: '2022 — 2024',
+    title: "Sekretaris Bidang Immawati — IMM Adam Malik",
+    year: "2022 — 2024",
     description:
-      'Berperan sebagai sekretaris bidang Immawati dalam Ikatan Mahasiswa Muhammadiyah Adam Malik, dengan tanggung jawab dalam administrasi, dokumentasi, dan koordinasi kegiatan bidang.',
+      "Berperan sebagai sekretaris bidang Immawati dalam Ikatan Mahasiswa Muhammadiyah Adam Malik, dengan tanggung jawab dalam administrasi, dokumentasi, dan koordinasi kegiatan bidang.",
   },
   {
-    title: 'HMTI UMS',
-    year: '2022 — 2024',
+    title: "HMTI UMS",
+    year: "2022 — 2024",
     description:
-      'Berpartisipasi dalam kegiatan organisasi mahasiswa Teknik Informatika dan berbagai aktivitas kemahasiswaan.',
+      "Berpartisipasi dalam kegiatan organisasi mahasiswa Teknik Informatika dan berbagai aktivitas kemahasiswaan.",
   },
-]
+];
+
+/* =========================
+   CERTIFICATES
+========================= */
 
 const certificates = [
   {
-    title: 'Pemrograman Back-End',
-    issuer: 'SOLOCOM',
+    title: "Pemrograman Back-End",
+    issuer: "SOLOCOM",
     description:
-      'Mengikuti pelatihan Pemrograman Back-End dengan fokus pada pengembangan aplikasi web sisi server, pembuatan API, pengelolaan database, serta logika backend untuk membangun sistem yang efisien dan terstruktur.',
+      "Mengikuti pelatihan Pemrograman Back-End dengan fokus pada pengembangan aplikasi web sisi server, pembuatan API, pengelolaan database, serta logika backend untuk membangun sistem yang efisien dan terstruktur.",
   },
   {
-    title: 'Python Programming',
-    issuer: 'Coursera Project Network',
+    title: "Python Programming",
+    issuer: "Coursera Project Network",
     description:
-      'Menyelesaikan proyek online dengan fokus pada dasar pemrograman Python, termasuk pembuatan program sederhana, penggunaan variabel, dan penerapan logika dasar dalam pengembangan aplikasi.',
-    link: 'https://www.coursera.org/account/accomplishments/verify/ZFCH7LFQHBDX',
+      "Menyelesaikan proyek online dengan fokus pada dasar pemrograman Python, termasuk pembuatan program sederhana, penggunaan variabel, dan penerapan logika dasar dalam pengembangan aplikasi.",
+    link: "https://www.coursera.org/account/accomplishments/verify/ZFCH7LFQHBDX",
   },
   {
-    title: 'Studi Independen',
-    issuer: 'RevoU',
+    title: "Studi Independen — RevoU",
+    issuer: "RevoU",
     description:
-      'Mengikuti program Studi Independen di RevoU untuk mengembangkan kemampuan dan wawasan dalam bidang digital serta pengembangan profesional.',
+      "Mengikuti program Studi Independen di RevoU sebagai bagian dari pengembangan kemampuan dan pengalaman di bidang digital.",
   },
-]
+];
 
 function Work() {
-  // Semua section tertutup ketika website pertama kali dibuka
-  const [openSection, setOpenSection] =
-    useState<SectionId | null>(null)
+  // Semua dropdown tertutup ketika halaman pertama kali dibuka
+  const [openSection, setOpenSection] = useState<SectionId | null>(null);
 
-  // Accordion:
-  // klik section tertutup → buka
-  // klik section yang sedang terbuka → tutup
-  // klik section lain → section sebelumnya otomatis tertutup
+  // Accordion behavior
   const handleToggle = (id: SectionId) => {
-    setOpenSection((current) =>
-      current === id ? null : id
-    )
-  }
+    setOpenSection((current) => (current === id ? null : id));
+  };
 
   return (
     <section
@@ -159,12 +165,11 @@ function Work() {
             linear-gradient(rgba(23,23,23,.035) 1px, transparent 1px),
             linear-gradient(90deg, rgba(23,23,23,.035) 1px, transparent 1px)
           `,
-          backgroundSize: '60px 60px',
+          backgroundSize: "60px 60px",
         }}
       />
 
       <div className="relative mx-auto max-w-[1440px] px-6 py-20 sm:px-8 lg:px-12 lg:py-28">
-
         {/* HEADER */}
         <div className="mb-12 border-t border-[#171717]/15 pt-6 lg:mb-16">
           <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#8A8783]">
@@ -176,23 +181,19 @@ function Work() {
           </h2>
 
           <p className="mt-6 max-w-2xl text-sm leading-7 text-[#6B6966] sm:text-base">
-            Proyek, pengalaman, organisasi, dan sertifikasi
-            yang membentuk perjalanan saya di bidang teknologi
-            dan pengembangan digital.
+            Proyek, pengalaman, organisasi, dan sertifikasi yang membentuk
+            perjalanan saya di bidang teknologi dan pengembangan digital.
           </p>
         </div>
 
         {/* ACCORDION */}
         <div className="border-t border-[#171717]/15">
           {sections.map((section) => {
-            const Icon = section.icon
-            const isOpen = openSection === section.id
+            const Icon = section.icon;
+            const isOpen = openSection === section.id;
 
             return (
-              <div
-                key={section.id}
-                className="border-b border-[#171717]/15"
-              >
+              <div key={section.id} className="border-b border-[#171717]/15">
                 {/* SECTION BUTTON */}
                 <button
                   type="button"
@@ -201,19 +202,15 @@ function Work() {
                   className="group flex w-full items-center justify-between gap-5 py-6 text-left sm:py-7"
                 >
                   <div className="flex min-w-0 items-center gap-4">
-
                     {/* Icon */}
                     <div
                       className={`flex h-10 w-10 shrink-0 items-center justify-center border transition-transform duration-200 ${
                         isOpen
-                          ? 'border-[#171717] bg-[#171717] text-white'
-                          : 'border-[#171717]/10 bg-white text-[#555250] group-hover:-translate-y-0.5 group-hover:border-[#171717]/30'
+                          ? "border-[#171717] bg-[#171717] text-white"
+                          : "border-[#171717]/10 bg-white text-[#555250] group-hover:-translate-y-0.5 group-hover:border-[#171717]/30"
                       }`}
                     >
-                      <Icon
-                        size={17}
-                        strokeWidth={1.5}
-                      />
+                      <Icon size={17} strokeWidth={1.5} />
                     </div>
 
                     {/* Title */}
@@ -231,22 +228,18 @@ function Work() {
                   {/* Arrow */}
                   <span
                     className={`flex h-8 w-8 shrink-0 items-center justify-center border border-[#171717]/10 transition-transform duration-200 ${
-                      isOpen ? 'rotate-180' : ''
+                      isOpen ? "rotate-180" : ""
                     }`}
                   >
-                    <ArrowDown
-                      size={15}
-                      strokeWidth={1.5}
-                    />
+                    <ArrowDown size={15} strokeWidth={1.5} />
                   </span>
                 </button>
 
-                {/* DROPDOWN CONTENT */}
+                {/* DROPDOWN */}
                 {isOpen && (
                   <div className="pb-7 sm:pl-14">
-
-                    {/* PROJECTS */}
-                    {section.id === 'projects' && (
+                    {/* ================= PROJECTS ================= */}
+                    {section.id === "projects" && (
                       <div className="space-y-4">
                         {projects.map((project) => (
                           <article
@@ -254,7 +247,6 @@ function Work() {
                             className="border border-[#171717]/10 bg-white/60 p-5 sm:p-6"
                           >
                             <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-
                               <div className="min-w-0">
                                 <div className="flex flex-wrap items-center gap-3">
                                   <h4 className="font-display text-base font-semibold sm:text-lg">
@@ -292,8 +284,8 @@ function Work() {
                       </div>
                     )}
 
-                    {/* EXPERIENCE */}
-                    {section.id === 'experience' && (
+                    {/* ================= EXPERIENCE ================= */}
+                    {section.id === "experience" && (
                       <div className="space-y-4">
                         {experiences.map((item) => (
                           <article
@@ -318,8 +310,8 @@ function Work() {
                       </div>
                     )}
 
-                    {/* ORGANIZATION */}
-                    {section.id === 'organization' && (
+                    {/* ================= ORGANIZATION ================= */}
+                    {section.id === "organization" && (
                       <div className="space-y-4">
                         {organizations.map((item) => (
                           <article
@@ -344,8 +336,8 @@ function Work() {
                       </div>
                     )}
 
-                    {/* CERTIFICATES */}
-                    {section.id === 'certificates' && (
+                    {/* ================= CERTIFICATES ================= */}
+                    {section.id === "certificates" && (
                       <div className="space-y-4">
                         {certificates.map((item) => (
                           <article
@@ -353,7 +345,6 @@ function Work() {
                             className="border border-[#171717]/10 bg-white/60 p-5 sm:p-6"
                           >
                             <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-
                               <div>
                                 <h4 className="font-display text-base font-semibold sm:text-lg">
                                   {item.title}
@@ -384,17 +375,15 @@ function Work() {
                         ))}
                       </div>
                     )}
-
                   </div>
                 )}
               </div>
-            )
+            );
           })}
         </div>
-
       </div>
     </section>
-  )
+  );
 }
 
-export default Work
+export default Work;
