@@ -176,8 +176,11 @@ function Work() {
             Work
           </p>
 
-          <h2 className="mt-5 max-w-4xl font-display text-[clamp(3rem,6vw,5.8rem)] font-semibold leading-[0.88] tracking-[-0.07em]">
-            What I&apos;ve worked on.
+          <h2 className="mt-5 max-w-4xl font-display text-[clamp(3rem,6vw,5.8rem)] font-semibold leading-[.88] tracking-[-.07em]">
+            My work &
+            <span className="block text-[#5C5A58]">
+              journey.
+            </span>
           </h2>
 
           <p className="mt-6 max-w-2xl text-sm leading-7 text-[#6B6966] sm:text-base">
