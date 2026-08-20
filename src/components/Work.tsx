@@ -160,7 +160,7 @@ const certifications: Certification[] = [
 ]
 
 function Work() {
-  const [openSection, setOpenSection] = useState<string | null>('projects')
+  const [openSection, setOpenSection] = useState<string | null>(null)
 
   const toggleSection = (section: string) => {
     setOpenSection((current) =>
