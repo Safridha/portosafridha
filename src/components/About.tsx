@@ -49,35 +49,21 @@ function About() {
         }}
       />
 
-      {/* Hexagons */}
+      {/* Decorative Shapes */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <Hexagon className="left-[-100px] top-[12%] h-[280px] w-[320px]" />
         <Hexagon className="right-[-120px] top-[25%] h-[350px] w-[400px]" />
         <Hexagon className="bottom-[-120px] left-[40%] h-[300px] w-[340px]" />
-
-        <motion.div
-          animate={{ y: [0, -15, 0], rotate: [0, 3, 0] }}
-          transition={{
-            duration: 9,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-          className="absolute bottom-[15%] left-[15%] h-24 w-28 border border-[#171717]/[0.07]"
-          style={{
-            clipPath:
-              'polygon(25% 3%,75% 3%,100% 50%,75% 97%,25% 97%,0 50%)',
-          }}
-        />
       </div>
 
       <div className="relative mx-auto max-w-[1440px] px-6 py-20 sm:px-8 lg:px-12 lg:py-28">
 
         {/* Heading */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
         >
           <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#8A8783]">
             About Me
@@ -91,12 +77,12 @@ function About() {
           </h2>
         </motion.div>
 
-        {/* About */}
+        {/* About Content */}
         <motion.div
-          initial={{ opacity: 0, y: 25 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6, delay: 0.05 }}
           className="mt-12 max-w-4xl"
         >
           <p className="text-lg leading-8 text-[#454340] sm:text-xl lg:text-2xl">
@@ -129,10 +115,10 @@ function About() {
 
         {/* Education */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.6 }}
           className="mt-14 border-t border-[#171717]/15 pt-6 lg:mt-16"
         >
           <div className="mb-5 flex items-center justify-between">
@@ -151,12 +137,12 @@ function About() {
             {education.map((item, index) => (
               <motion.div
                 key={item.school}
-                initial={{ opacity: 0, y: 12 }}
+                initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{
-                  duration: 0.5,
-                  delay: index * 0.08,
+                  duration: 0.4,
+                  delay: index * 0.05,
                 }}
                 className="flex items-center gap-3"
               >
@@ -164,6 +150,7 @@ function About() {
                   src={item.logo}
                   alt={`${item.school} logo`}
                   className="h-8 w-8 shrink-0 object-contain"
+                  loading="lazy"
                 />
 
                 <div className="min-w-0">
