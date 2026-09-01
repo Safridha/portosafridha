@@ -51,7 +51,7 @@ const sections: Section[] = [
           "Website landing page yang dikembangkan untuk memberikan informasi mengenai layanan digital printing, produk, dan kebutuhan pelanggan secara lebih mudah dan terstruktur.",
         technologies: ["React", "Vite", "Tailwind CSS", "JavaScript"],
         documentation: "/documentation/2audi.png",
-        link: "https://desafar.vercel.app/",
+        link: "https://2audiprinting.my.id/",
       },
       {
         title: "QCF — Our’anic Corporate Forum",
@@ -61,6 +61,17 @@ const sections: Section[] = [
           "Website untuk memperkenalkan Qur’anic Corporate Forum (QCF), sebuah platform yang berfokus pada pengembangan budaya organisasi, kepemimpinan, sumber daya manusia, dan transformasi digital berbasis nilai-nilai Qur’ani.",
         technologies: ["React", "Vite", "Tailwind CSS", "JavaScript"],
         documentation: "/documentation/qcf.png",
+        link: "https://qurota.id/",
+      },
+      {
+        title: "Desafar",
+        organization: "Umroh Website",
+        period: "2026",
+        description:
+          "Mengembangkan website landing page untuk layanan perjalanan Umroh dengan fokus pada penyajian informasi paket, fasilitas, dan layanan secara terstruktur. Website dirancang dengan antarmuka yang responsif, modern, dan mudah digunakan untuk membantu calon jamaah memperoleh informasi sebelum melakukan pendaftaran.",
+        technologies: ["React", "Vite", "Tailwind CSS", "JavaScript"],
+        documentation: "/documentation/desafar.png",
+        link: "https://desafar.vercel.app/",
       },
     ],
   },
@@ -83,7 +94,7 @@ const sections: Section[] = [
       {
         title: "Studi Independen",
         organization: "RevoU",
-        period: "2024 — 2025",
+        period: "2024",
         description:
           "Mengikuti program Studi Independen bersama RevoU dengan fokus pada pengembangan kemampuan digital, analisis data, dan penerapan keterampilan melalui pembelajaran berbasis proyek.",
         technologies: [
@@ -127,39 +138,28 @@ const sections: Section[] = [
     subtitle: "Pelatihan dan sertifikasi yang telah diselesaikan.",
     icon: GraduationCap,
     items: [
-          {
-            title: 'Pemrograman Back-End',
-            organization: 'Lembaga Pendidikan Solocom',
-            period: 'Issued Aug 2024 · Expired Jan 2025',
-            description:
-              'Mengikuti pelatihan Pemrograman Back-End yang diselenggarakan oleh SOLOCOM dengan fokus pada pengembangan aplikasi web sisi server. Mempelajari dasar hingga implementasi pembuatan API, pengelolaan database, serta logika backend untuk membangun sistem yang efisien dan terstruktur.',
-            technologies: [
-              'Back-End',
-              'API',
-              'Database',
-              'Web Development',
-            ],
-            documentation: '/documentation/backend-solocom.png',
-          },
-      
-          {
-            title: 'Create Your First Python Program',
-            organization: 'Coursera',
-            period: 'Issued Feb 2023',
-            description:
-              'Menyelesaikan proyek online melalui Coursera Project Network dengan fokus pada dasar pemrograman Python, termasuk pembuatan program sederhana, penggunaan variabel, serta penerapan logika dasar dalam pengembangan aplikasi.',
-            technologies: [
-              'Python',
-              'Programming',
-              'Coursera Project Network',
-            ],
-            documentation: '/documentation/python-coursera.png',
-            link: 'https://www.coursera.org/account/accomplishments/verify/ZFCH7LFQHBDX',
-          },
-        ],
+      {
+        title: "Pemrograman Back-End",
+        organization: "Lembaga Pendidikan Solocom",
+        period: "Issued Aug 2024 · Expired Jan 2025",
+        description:
+          "Mengikuti pelatihan Pemrograman Back-End yang diselenggarakan oleh SOLOCOM dengan fokus pada pengembangan aplikasi web sisi server. Mempelajari dasar hingga implementasi pembuatan API, pengelolaan database, serta logika backend untuk membangun sistem yang efisien dan terstruktur.",
+        technologies: ["Back-End", "API", "Database", "Web Development"],
+        documentation: "/documentation/backend-solocom.png",
       },
-    ]
-  
+      {
+        title: "Create Your First Python Program",
+        organization: "Coursera",
+        period: "Feb 2023",
+        description:
+          "Menyelesaikan proyek online melalui Coursera Project Network dengan fokus pada dasar pemrograman Python, termasuk pembuatan program sederhana, penggunaan variabel, serta penerapan logika dasar dalam pengembangan aplikasi.",
+        technologies: ["Python", "Programming", "Coursera Project Network"],
+        documentation: "/documentation/python-coursera.png",
+        link: "https://www.coursera.org/account/accomplishments/verify/ZFCH7LFQHBDX",
+      },
+    ],
+  },
+];
 
 function Work() {
   const [openSection, setOpenSection] = useState<string | null>(null);
