@@ -29,15 +29,15 @@ const sections: Section[] = [
     key: "projects",
     title: "Projects",
     subtitle:
-      "Website dan sistem yang saya kerjakan dalam pengembangan web dan digital.",
+      "Websites and digital systems I have developed throughout my journey in web development and technology.",
     icon: FolderOpen,
     items: [
       {
-        title: "Sistem Administrasi BPKPAD",
+        title: "BPKPAD Administration System",
         organization: "BPKPAD",
         period: "2025 — 2026",
         description:
-          "Mengembangkan dan membantu pengelolaan sistem informasi untuk mendukung kebutuhan administrasi dan pengolahan data di lingkungan BPKPAD. Sistem dibuat untuk membantu proses administrasi agar lebih terstruktur dan efisien.",
+          "Developed and supported the management of an information system designed to meet administrative and data processing needs within BPKPAD. The system was created to help streamline administrative processes and improve efficiency.",
         technologies: ["PHP", "Laravel", "CSS", "MySQL"],
         documentation: "/documentation/bpkpad.png",
       },
@@ -46,27 +46,27 @@ const sections: Section[] = [
         organization: "Landing Page",
         period: "2026",
         description:
-          "Mengembangkan website digital printing untuk memberikan informasi layanan, produk, dan kebutuhan percetakan secara lebih mudah dan terstruktur. Website dirancang responsif dengan tampilan modern untuk memudahkan pelanggan mengakses informasi layanan.",
+          "Developed a digital printing website to provide structured and accessible information about services, products, and printing needs. The website features a modern and responsive design to make it easier for customers to explore available services.",
         technologies: ["React", "Vite", "Tailwind CSS", "JavaScript"],
         documentation: "/documentation/2audi.png",
         link: "https://2audiprinting.my.id/",
       },
       {
-        title: "QCF — Qur’anic Corporate Forum",
+        title: "QCF — Qur'anic Corporate Forum",
         organization: "Corporate Website",
         period: "2026",
         description:
-          "Mengembangkan website untuk memperkenalkan Qur’anic Corporate Forum (QCF), sebuah platform yang berfokus pada pengembangan budaya organisasi, kepemimpinan, sumber daya manusia, dan transformasi digital berbasis nilai-nilai Qur’ani.",
+          "Developed a corporate website for Qur'anic Corporate Forum (QCF), a platform focused on organizational culture, leadership, human resources, and digital transformation based on Qur'anic values.",
         technologies: ["React", "Vite", "Tailwind CSS", "JavaScript"],
         documentation: "/documentation/qcf.png",
         link: "https://qurota.id/",
       },
       {
         title: "Desafar",
-        organization: "Umroh Website",
+        organization: "Umrah Travel Website",
         period: "2026",
         description:
-          "Mengembangkan website landing page untuk layanan perjalanan Umroh dengan fokus pada penyajian informasi paket, fasilitas, dan layanan secara terstruktur. Website dirancang dengan antarmuka yang responsif, modern, dan mudah digunakan untuk membantu calon jamaah memperoleh informasi sebelum melakukan pendaftaran.",
+          "Developed a landing page for an Umrah travel service, focusing on providing structured information about travel packages, facilities, and available services. The website features a modern, responsive, and user-friendly interface to help prospective pilgrims access information before registration.",
         technologies: ["React", "Vite", "Tailwind CSS", "JavaScript"],
         documentation: "/documentation/desafar.png",
         link: "https://desafar.vercel.app/",
@@ -77,24 +77,25 @@ const sections: Section[] = [
   {
     key: "experience",
     title: "Experience",
-    subtitle: "Pengalaman kerja, magang, dan program pengembangan profesional.",
+    subtitle:
+      "Professional experience, internships, and professional development programs.",
     icon: BriefcaseBusiness,
     items: [
       {
-        title: "Pengalaman Magang",
-        organization: "Pengembangan Web & Sistem Informasi",
+        title: "Internship Experience",
+        organization: "Web Development & Information Systems",
         period: "2025 — 2026",
         description:
-          "Terlibat dalam pengembangan dan pengelolaan sistem informasi, termasuk membantu proses pengembangan aplikasi web, pengolahan data, serta kebutuhan administrasi digital.",
+          "Contributed to the development and management of information systems, including supporting web application development, data processing, and digital administrative needs.",
         technologies: ["PHP", "Laravel", "MySQL", "Web Development"],
         documentation: "/documentation/magang.png",
       },
       {
-        title: "Studi Independen",
+        title: "Independent Study Program",
         organization: "RevoU",
         period: "2024",
         description:
-          "Mengikuti program Studi Independen bersama RevoU dengan fokus pada analisis data. Melakukan analisis data penjualan secara end-to-end, mulai dari data cleaning, pengolahan dan visualisasi data menggunakan Microsoft Excel dan Power BI, hingga menghasilkan insight dan rekomendasi bisnis berbasis data.",
+          "Completed an Independent Study Program with RevoU, focusing on data analytics. Conducted end-to-end sales data analysis, including data cleaning, data processing, and visualization using Microsoft Excel and Power BI, resulting in data-driven insights and business recommendations.",
         technologies: [
           "Data Analytics",
           "Microsoft Excel",
@@ -109,23 +110,24 @@ const sections: Section[] = [
   {
     key: "organization",
     title: "Organization",
-    subtitle: "Kegiatan organisasi dan pengalaman berkolaborasi.",
+    subtitle:
+      "Organizational activities and collaborative experiences throughout my academic journey.",
     icon: Users,
     items: [
       {
-        title: "Sekretaris Bidang Immawati",
+        title: "Secretary of the Immawati Division",
         organization: "Ikatan Mahasiswa Muhammadiyah Adam Malik",
         period: "2022 — 2024",
         description:
-          "Berperan sebagai sekretaris bidang Immawati dalam mendukung administrasi, dokumentasi, koordinasi kegiatan, serta pengelolaan kebutuhan organisasi.",
+          "Served as the secretary of the Immawati Division, supporting administrative tasks, documentation, activity coordination, and organizational management.",
         documentation: "/documentation/immawati.png",
       },
       {
-        title: "Staff Divisi Kaderisasi",
+        title: "Cadre Development Division Staff",
         organization: "Himpunan Mahasiswa Teknik Informatika UMS",
         period: "2022 — 2024",
         description:
-          "Berperan dalam kegiatan organisasi dan kaderisasi mahasiswa Teknik Informatika, termasuk mendukung pelaksanaan kegiatan, koordinasi anggota, dan kebutuhan administrasi divisi.",
+          "Contributed to organizational and student development activities within the Informatics Engineering student association, including supporting event implementation, member coordination, and divisional administrative needs.",
         documentation: "/documentation/hmti.png",
       },
     ],
@@ -134,15 +136,16 @@ const sections: Section[] = [
   {
     key: "certification",
     title: "Certification",
-    subtitle: "Pelatihan dan sertifikasi yang telah diselesaikan.",
+    subtitle:
+      "Training programs and certifications completed to support my professional development.",
     icon: GraduationCap,
     items: [
       {
-        title: "Pemrograman Back-End",
-        organization: "Lembaga Pendidikan Solocom",
+        title: "Back-End Programming",
+        organization: "Solocom Education Institution",
         period: "Issued Aug 2024 · Expired Jan 2025",
         description:
-          "Mengikuti pelatihan Pemrograman Back-End yang diselenggarakan oleh SOLOCOM dengan fokus pada pengembangan aplikasi web sisi server. Mempelajari dasar hingga implementasi pembuatan API, pengelolaan database, serta logika backend untuk membangun sistem yang efisien dan terstruktur.",
+          "Completed a Back-End Programming training program organized by SOLOCOM, focusing on server-side web application development. The program covered the fundamentals and implementation of API development, database management, and backend logic for building efficient and structured systems.",
         technologies: ["Back-End", "API", "Database", "Web Development"],
         documentation: "/documentation/backend-solocom.png",
       },
@@ -151,7 +154,7 @@ const sections: Section[] = [
         organization: "Coursera",
         period: "Feb 2023",
         description:
-          "Menyelesaikan proyek online melalui Coursera Project Network dengan fokus pada dasar pemrograman Python, termasuk pembuatan program sederhana, penggunaan variabel, serta penerapan logika dasar dalam pengembangan aplikasi.",
+          "Completed an online project through the Coursera Project Network, focusing on Python programming fundamentals, including creating simple programs, working with variables, and applying basic programming logic in application development.",
         technologies: ["Python", "Programming", "Coursera Project Network"],
         documentation: "/documentation/python-coursera.png",
         link: "https://www.coursera.org/account/accomplishments/verify/ZFCH7LFQHBDX",
@@ -190,8 +193,9 @@ function Work() {
           </h2>
 
           <p className="mt-8 max-w-3xl text-sm leading-7 text-[#6B6966] sm:text-base">
-            Proyek, pengalaman, organisasi, dan sertifikasi yang membentuk
-            perjalanan saya di bidang teknologi dan pengembangan digital.
+            A collection of projects, professional experiences, organizational
+            activities, and certifications that have shaped my journey in
+            technology and digital development.
           </p>
         </div>
 
@@ -263,18 +267,19 @@ function Work() {
                         )}
 
                         {/* Technologies */}
-                        {item.technologies && item.technologies.length > 0 && (
-                          <div className="mt-5 flex flex-wrap gap-2">
-                            {item.technologies.map((technology) => (
-                              <span
-                                key={technology}
-                                className="border border-[#171717]/10 bg-[#F3F2F0] px-3 py-2 font-mono text-[8px] uppercase tracking-[0.12em] text-[#77736F]"
-                              >
-                                {technology}
-                              </span>
-                            ))}
-                          </div>
-                        )}
+                        {item.technologies &&
+                          item.technologies.length > 0 && (
+                            <div className="mt-5 flex flex-wrap gap-2">
+                              {item.technologies.map((technology) => (
+                                <span
+                                  key={technology}
+                                  className="border border-[#171717]/10 bg-[#F3F2F0] px-3 py-2 font-mono text-[8px] uppercase tracking-[0.12em] text-[#77736F]"
+                                >
+                                  {technology}
+                                </span>
+                              ))}
+                            </div>
+                          )}
 
                         {/* Description */}
                         <p className="mt-6 max-w-3xl text-sm leading-7 text-[#5F5C59] sm:text-base">
@@ -315,7 +320,7 @@ function Work() {
                         ) : (
                           <div className="flex aspect-[4/3] w-full items-center justify-center border border-[#171717]/10 bg-[#F3F2F0]">
                             <span className="font-mono text-[8px] uppercase tracking-[0.15em] text-[#999591]">
-                              No documentation
+                              No documentation available
                             </span>
                           </div>
                         )}
