@@ -4,22 +4,25 @@ import About from './components/About'
 import Skills from './components/Skills'
 import Work from './components/Work'
 import Contact from './components/Contact'
+import { LanguageProvider } from './LanguageContext'
 
 function App() {
   return (
-    <main className="bg-[#F1F0EE]">
-      <Navbar />
+    <LanguageProvider>
+      <main className="bg-[#F1F0EE]">
+        <Navbar />
 
-      <Hero />
+        <Hero />
 
-      <About />
+        <About />
 
-      <Skills />
+        <Skills />
 
-      <Work />
+        <Work />
 
-      <Contact />
-    </main>
+        <Contact />
+      </main>
+    </LanguageProvider>
   )
 }
 

@@ -1,14 +1,45 @@
 import { ArrowUpRight, Menu, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import { useLanguage, type Language } from '../LanguageContext'
 
 const navItems = [
-  { label: 'About', href: '#about' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Work', href: '#work' },
-  { label: 'Contact', href: '#contact' },
+  { label: { en: 'About', id: 'Tentang' }, href: '#about' },
+  { label: { en: 'Skills', id: 'Keahlian' }, href: '#skills' },
+  { label: { en: 'Work', id: 'Karya' }, href: '#work' },
+  { label: { en: 'Contact', id: 'Kontak' }, href: '#contact' },
 ]
 
+function LanguageSelector() {
+  const { language, setLanguage } = useLanguage()
+
+  return (
+    <div
+      role="group"
+      aria-label={language === 'id' ? 'Pilih bahasa' : 'Select language'}
+      className="flex items-center rounded-xl border border-[#E1DFDC] bg-[#F7F6F4] p-1"
+    >
+      {(['en', 'id'] as const).map((option: Language) => (
+        <button
+          key={option}
+          type="button"
+          aria-label={option === 'en' ? 'English' : 'Bahasa Indonesia'}
+          aria-pressed={language === option}
+          onClick={() => setLanguage(option)}
+          className={`min-h-10 min-w-10 rounded-lg px-2.5 text-[11px] font-semibold transition-colors ${
+            language === option
+              ? 'bg-white text-[#171717] shadow-sm'
+              : 'text-[#686562] hover:text-[#171717]'
+          }`}
+        >
+          {option.toUpperCase()}
+        </button>
+      ))}
+    </div>
+  )
+}
+
 function Navbar() {
+  const { language } = useLanguage()
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
@@ -150,8 +181,7 @@ function Navbar() {
               DESKTOP NAVIGATION
           ========================================== */}
 
-          <div className="hidden items-center md:flex">
-
+          <div className="hidden items-center gap-3 md:flex">
             <div className="flex items-center rounded-xl border border-[#E1DFDC] bg-[#F7F6F4] p-1">
 
               {navItems.map((item) => {
@@ -160,7 +190,7 @@ function Navbar() {
 
                 return (
                   <a
-                    key={item.label}
+                    key={item.href}
                     href={item.href}
                     className={`group relative flex items-center rounded-lg px-4 py-2.5 transition-all duration-300 lg:px-5 ${
                       isActive
@@ -169,7 +199,7 @@ function Navbar() {
                     }`}
                   >
                     <span className="text-xs font-medium lg:text-sm">
-                      {item.label}
+                      {item.label[language]}
                     </span>
 
                     {/* Active indicator */}
@@ -192,6 +222,7 @@ function Navbar() {
               })}
 
             </div>
+            <LanguageSelector />
           </div>
 
           {/* =========================================
@@ -209,7 +240,7 @@ function Navbar() {
             onClick={() =>
               setIsOpen((previous) => !previous)
             }
-            className={`relative flex h-10 w-10 items-center justify-center rounded-xl border transition-all duration-300 md:hidden ${
+            className={`relative flex h-11 w-11 items-center justify-center rounded-xl border transition-all duration-300 md:hidden ${
               isOpen
                 ? 'border-[#171717] bg-[#171717] text-white'
                 : 'border-[#D2D0CC] bg-white text-[#171717] hover:border-[#777471] hover:bg-[#F5F4F2]'
@@ -234,10 +265,10 @@ function Navbar() {
         ========================================== */}
 
         <div
-          className={`overflow-hidden transition-all duration-300 md:hidden ${
+          className={`overflow-x-hidden transition-all duration-300 md:hidden ${
             isOpen
-              ? 'mt-3 max-h-[440px] opacity-100'
-              : 'max-h-0 opacity-0'
+              ? 'mt-3 max-h-[70dvh] overflow-y-auto opacity-100'
+              : 'max-h-0 overflow-y-hidden opacity-0'
           }`}
         >
           <div className="relative overflow-hidden rounded-2xl border border-[#D4D2CF] bg-white p-3 shadow-xl shadow-black/[0.08]">
@@ -257,13 +288,20 @@ function Navbar() {
             {/* Mobile Header */}
 
             <div className="relative border-b border-[#E8E6E3] px-3 pb-4 pt-2">
-              <p className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#999591]">
-                Navigation
+              <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#77736F]">
+                {language === 'id' ? 'Navigasi' : 'Navigation'}
               </p>
 
               <p className="mt-1 font-display text-sm font-semibold text-[#171717]">
-                Explore portfolio
+                {language === 'id' ? 'Jelajahi portofolio' : 'Explore portfolio'}
               </p>
+            </div>
+
+            <div className="relative flex items-center justify-between border-b border-[#E8E6E3] px-3 py-3">
+              <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#77736F]">
+                {language === 'id' ? 'Bahasa' : 'Language'}
+              </span>
+              <LanguageSelector />
             </div>
 
             {/* Mobile Items */}
@@ -276,7 +314,7 @@ function Navbar() {
 
                 return (
                   <a
-                    key={item.label}
+                    key={item.href}
                     href={item.href}
                     onClick={handleNavClick}
                     className={`group relative flex items-center justify-between overflow-hidden rounded-xl px-3 py-3.5 transition-all duration-300 ${
@@ -303,7 +341,7 @@ function Navbar() {
                           : 'text-[#555250]'
                       }`}
                     >
-                      {item.label}
+                      {item.label[language]}
                     </span>
 
                     <ArrowUpRight

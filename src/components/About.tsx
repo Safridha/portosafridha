@@ -1,21 +1,22 @@
 import { motion } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
+import { useLanguage } from '../LanguageContext'
 
 const education = [
   {
     logo: '/education/ums.png',
     school: 'Universitas Muhammadiyah Surakarta',
-    degree: 'S1 Teknik Informatika · 2022 — 2026',
+    degree: { en: 'B.S. in Informatics Engineering · 2022 — 2026', id: 'S1 Teknik Informatika · 2022 — 2026' },
   },
   {
     logo: '/education/sma-batik-1.png',
     school: 'SMA Batik 1 Surakarta',
-    degree: 'IPA · 2019 — 2022',
+    degree: { en: 'Science track · 2019 — 2022', id: 'IPA · 2019 — 2022' },
   },
   {
     logo: '/education/smp-9.png',
     school: 'SMP Negeri 9 Surakarta',
-    degree: '2016 — 2019',
+    degree: { en: '2016 — 2019', id: '2016 — 2019' },
   },
 ]
 
@@ -32,6 +33,8 @@ function Hexagon({ className = '' }: { className?: string }) {
 }
 
 function About() {
+  const { language } = useLanguage()
+
   return (
     <section
       id="about"
@@ -56,7 +59,7 @@ function About() {
         <Hexagon className="bottom-[-120px] left-[40%] h-[300px] w-[340px]" />
       </div>
 
-      <div className="relative mx-auto max-w-[1440px] px-6 py-20 sm:px-8 lg:px-12 lg:py-28">
+      <div className="relative mx-auto max-w-[1440px] px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-28">
 
         {/* Heading */}
         <motion.div
@@ -65,14 +68,14 @@ function About() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#8A8783]">
-            About Me
+          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#8A8783] sm:text-[11px] sm:tracking-[0.25em]">
+            {language === 'id' ? 'Tentang Saya' : 'About Me'}
           </p>
 
-          <h2 className="mt-5 max-w-4xl font-display text-[clamp(3rem,6vw,5.8rem)] font-semibold leading-[.88] tracking-[-.07em]">
-            More than
-            <span className="block text-[#5C5A58]">
-              just a developer.
+          <h2 className="mt-5 max-w-4xl font-display text-[clamp(2.4rem,9vw,5.8rem)] font-semibold leading-[.92] tracking-[-.07em] sm:text-[clamp(3rem,6vw,5.8rem)] sm:leading-[.88]">
+            {language === 'id' ? 'Bukan sekadar' : 'More than'}
+            <span className="block text-[#171717]">
+              {language === 'id' ? 'menulis kode.' : 'just a developer.'}
             </span>
           </h2>
         </motion.div>
@@ -86,30 +89,30 @@ function About() {
           className="mt-12 max-w-4xl"
         >
           <p className="text-lg leading-8 text-[#454340] sm:text-xl lg:text-2xl">
-            I&apos;m{' '}
+            {language === 'id' ? 'Saya ' : "I'm "}
             <strong className="font-semibold text-[#171717]">
               Safridha Audi
             </strong>
-            , an Informatics Engineering graduate with an
-            interest in{' '}
+            {language === 'id'
+              ? ', lulusan Teknik Informatika yang tertarik pada '
+              : ', an Informatics Engineering graduate interested in '}
             <strong className="font-semibold text-[#171717]">
-              web development, full stack development,
-              and data analytics.
+              {language === 'id'
+                ? 'pengembangan web, full-stack, dan analisis data.'
+                : 'web development, full-stack engineering, and data analytics.'}
             </strong>
           </p>
 
           <p className="mt-5 max-w-3xl text-sm leading-7 text-[#6B6966] sm:text-base">
-            I enjoy building web applications, developing
-            digital experiences, and working with data to
-            discover meaningful insights. I like understanding
-            how things work and turning ideas into solutions
-            that are functional, clear, and useful.
+            {language === 'id'
+              ? 'Saya menikmati proses merancang aplikasi web, membangun pengalaman digital yang intuitif, dan menggali insight dari data. Bagi saya, solusi yang baik bukan hanya berjalan—tetapi juga jelas, relevan, dan benar-benar membantu penggunanya.'
+              : 'I enjoy designing web applications, creating intuitive digital experiences, and uncovering insights in data. To me, a good solution does more than work—it should be clear, relevant, and genuinely useful to the people who use it.'}
           </p>
 
           <p className="mt-3 max-w-3xl text-sm leading-7 text-[#6B6966] sm:text-base">
-            Beyond the technical side, I value problem solving,
-            collaboration, attention to detail, and continuously
-            learning new technologies.
+            {language === 'id'
+              ? 'Saya juga menghargai kolaborasi, ketelitian, dan kemauan untuk terus belajar. Saya terbuka untuk bertumbuh bersama tim dan mengerjakan tantangan digital yang bermakna.'
+              : "I value collaboration, attention to detail, and continuous learning. I'm eager to grow with a team and take on meaningful digital challenges."}
           </p>
         </motion.div>
 
@@ -123,7 +126,7 @@ function About() {
         >
           <div className="mb-5 flex items-center justify-between">
             <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-[#8A8783]">
-              Education
+              {language === 'id' ? 'Pendidikan' : 'Education'}
             </p>
 
             <ArrowUpRight
@@ -154,12 +157,12 @@ function About() {
                 />
 
                 <div className="min-w-0">
-                  <h4 className="truncate font-display text-sm font-semibold text-[#171717]">
+                  <h4 className="font-display text-sm font-semibold leading-5 text-[#171717]">
                     {item.school}
                   </h4>
 
-                  <p className="mt-0.5 text-[11px] text-[#77736F]">
-                    {item.degree}
+                  <p className="mt-0.5 text-xs leading-5 text-[#77736F]">
+                    {item.degree[language]}
                   </p>
                 </div>
               </motion.div>

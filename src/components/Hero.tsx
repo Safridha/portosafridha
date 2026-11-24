@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion'
-import { ArrowDown, Code2, Database, Layers3 } from 'lucide-react'
+import { ArrowDown, ArrowRight, Code2, Database, Layers3 } from 'lucide-react'
+import { useLanguage } from '../LanguageContext'
 
 const specialties = [
-  { icon: Code2, label: 'WEB DEVELOPMENT' },
-  { icon: Layers3, label: 'FULL STACK' },
-  { icon: Database, label: 'DATA ANALYTICS' },
+  { icon: Code2, label: 'WEB DEVELOPMENT', labelId: 'PENGEMBANGAN WEB' },
+  { icon: Layers3, label: 'FULL-STACK', labelId: 'FULL-STACK' },
+  { icon: Database, label: 'DATA ANALYTICS', labelId: 'ANALISIS DATA' },
 ]
 
 function Hexagon({ className = '' }: { className?: string }) {
@@ -20,6 +21,8 @@ function Hexagon({ className = '' }: { className?: string }) {
 }
 
 function Hero() {
+  const { language } = useLanguage()
+
   return (
     <section
       id="home"
@@ -62,8 +65,8 @@ function Hero() {
       <div className="pointer-events-none absolute bottom-0 right-[7%] top-0 hidden w-px bg-black/[0.06] lg:block" />
 
       {/* Main */}
-      <div className="relative mx-auto flex min-h-screen max-w-[1440px] items-center px-6 pb-20 pt-32 sm:px-8 lg:px-12">
-        <div className="grid w-full items-center gap-12 lg:grid-cols-[1fr_.8fr] lg:gap-8">
+      <div className="relative mx-auto flex min-h-screen max-w-[1440px] items-center px-5 pb-24 pt-28 sm:px-8 sm:pt-32 lg:px-12">
+        <div className="grid w-full items-center gap-10 sm:gap-12 lg:grid-cols-[1fr_.8fr] lg:gap-8">
 
           {/* LEFT */}
           <motion.div
@@ -75,26 +78,40 @@ function Hero() {
             }}
             className="relative z-10"
           >
+            <p className="mb-5 font-mono text-[10px] uppercase tracking-[0.18em] text-[#555250] sm:text-xs sm:tracking-[0.24em]">
+              {language === 'id' ? 'TEKNIK INFORMATIKA' : 'INFORMATICS ENGINEERING'}{' '}
+              <span className="text-[#AAA8A4]">/</span> WEB & DATA
+            </p>
+
             {/* Main Title */}
-            <h1 className="font-display text-[clamp(3.2rem,6vw,6rem)] font-semibold leading-[.86] tracking-[-.07em]">
-              INFORMATICS
-              <span className="block mt-2 text-[#5C5A58]">
-                ENGINEER.
+            <h1 className="font-display text-[clamp(2.3rem,9.8vw,6rem)] font-semibold leading-[.9] tracking-[-.07em] sm:text-[clamp(3.2rem,6vw,6rem)] sm:leading-[.88]">
+              SAFRIDHA AUDI
+              <span className="mt-2 block text-[#171717]">
+                APRILIASUNFITY
               </span>
             </h1>
 
-            {/* Name */}
-            <h2 className="mt-8 font-display text-xl font-semibold sm:text-2xl">
-              Safridha Audi Apriliasunfity
-            </h2>
-
             {/* Description */}
-            <p className="mt-6 max-w-[590px] text-sm leading-7 text-[#666360] sm:text-[15px]">
-              Informatics Engineering graduate focused on
-              building functional digital experiences,
-              developing web applications, and transforming
-              data into meaningful insights.
+            <p className="mt-7 max-w-[590px] text-[15px] leading-7 text-[#666360] sm:text-base">
+              {language === 'id'
+                ? 'Saya lulusan Teknik Informatika yang senang mengubah kebutuhan menjadi aplikasi web yang mudah digunakan—serta mengolah data menjadi insight yang membantu pengambilan keputusan.'
+                : "I'm an Informatics Engineering graduate who enjoys turning real needs into intuitive web applications—and transforming data into insights that support better decisions."}
             </p>
+
+            <div className="mt-7 flex flex-wrap gap-3">
+              <a
+                href="#work"
+                className="inline-flex items-center gap-2 bg-[#171717] px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-[#383633]"
+              >
+                {language === 'id' ? 'Lihat karya saya' : 'Explore my work'} <ArrowRight size={16} />
+              </a>
+              <a
+                href="#contact"
+                className="inline-flex items-center border border-[#171717]/20 bg-white/70 px-5 py-3 text-sm font-medium text-[#171717] transition-colors hover:border-[#77736F] hover:bg-[#F7F6F4]"
+              >
+                {language === 'id' ? 'Mari terhubung' : "Let's connect"}
+              </a>
+            </div>
 
             {/* Specialties */}
             <div className="mt-7 flex flex-wrap gap-2">
@@ -112,8 +129,8 @@ function Hero() {
                       className="text-[#555250]"
                     />
 
-                    <span className="font-mono text-[8px] tracking-[.1em] text-[#555250] sm:text-[9px]">
-                      {item.label}
+                    <span className="font-mono text-[9px] tracking-[.06em] text-[#555250] sm:text-[10px] sm:tracking-[.1em]">
+                      {language === 'id' ? item.labelId : item.label}
                     </span>
                   </div>
                 )
@@ -142,7 +159,7 @@ function Hero() {
             />
 
             {/* Photo */}
-            <div className="relative mx-auto aspect-square w-[90%]">
+            <div className="profile-frame relative mx-auto aspect-square w-[90%]">
 
               {/* Outer Hexagon */}
               <div
@@ -172,8 +189,8 @@ function Hero() {
               >
                 <img
                   src="/profile/safridha.jpg"
-                  alt="Safridha Audi"
-                  className="h-full w-full object-contain object-center"
+                  alt={language === 'id' ? 'Potret Safridha Audi' : 'Portrait of Safridha Audi'}
+                  className="profile-image h-full w-full object-cover object-center"
                 />
               </div>
 
@@ -207,8 +224,8 @@ function Hero() {
             strokeWidth={1.5}
           />
 
-          <span className="font-mono text-[8px] uppercase tracking-[.22em] text-[#8A8783]">
-            Scroll to explore
+          <span className="font-mono text-[9px] uppercase tracking-[.16em] text-[#8A8783] sm:tracking-[.22em]">
+            {language === 'id' ? 'GULIR UNTUK MENJELAJAH' : 'SCROLL TO EXPLORE'}
           </span>
         </div>
       </div>

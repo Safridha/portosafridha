@@ -5,12 +5,17 @@ import {
   GraduationCap,
   Users,
 } from "lucide-react";
+import { useLanguage } from "../LanguageContext";
 
 type Item = {
   title: string;
+  titleId?: string;
   organization?: string;
+  organizationId?: string;
   period?: string;
+  periodId?: string;
   description: string;
+  descriptionId?: string;
   technologies?: string[];
   documentation?: string;
   link?: string;
@@ -19,7 +24,9 @@ type Item = {
 type Section = {
   key: string;
   title: string;
+  titleId?: string;
   subtitle: string;
+  subtitleId?: string;
   icon: typeof FolderOpen;
   items: Item[];
 };
@@ -28,8 +35,11 @@ const sections: Section[] = [
   {
     key: "projects",
     title: "Projects",
+    titleId: "Proyek",
     subtitle:
-      "Websites and digital systems I have developed throughout my journey in web development and technology.",
+      "Websites and digital systems I've built to address real needs, from information systems to customer-facing landing pages.",
+    subtitleId:
+      "Aplikasi dan situs web yang saya kerjakan untuk menjawab kebutuhan nyata, dari sistem informasi hingga landing page.",
     icon: FolderOpen,
     items: [
       {
@@ -37,16 +47,21 @@ const sections: Section[] = [
         organization: "BPKPAD",
         period: "2025 — 2026",
         description:
-          "Developed and supported the management of an information system designed to meet administrative and data processing needs within BPKPAD. The system was created to help streamline administrative processes and improve efficiency.",
+          "Helped develop and maintain an information system for BPKPAD's administrative and data-processing needs. The system supports more structured administrative workflows and information management.",
+        descriptionId:
+          "Mengembangkan dan mendukung pengelolaan sistem informasi untuk kebutuhan administrasi dan pengolahan data BPKPAD. Sistem ini membantu merapikan alur kerja administrasi agar proses pengelolaan informasi lebih terstruktur.",
         technologies: ["PHP", "Laravel", "CSS", "MySQL"],
         documentation: "/documentation/bpkpad.png",
       },
       {
         title: "2 Audi Digital Printing",
-        organization: "Landing Page",
+        organization: "Digital Printing Website",
+        organizationId: "Landing Page",
         period: "2026",
         description:
-          "Developed a digital printing website to provide structured and accessible information about services, products, and printing needs. The website features a modern and responsive design to make it easier for customers to explore available services.",
+          "Built a digital printing website that presents services and products in a clear, organized way. Its responsive design helps customers find the printing services they need.",
+        descriptionId:
+          "Membangun situs percetakan digital yang menyajikan informasi layanan dan produk secara terstruktur. Tampilan responsif membantu pelanggan menemukan layanan cetak yang mereka butuhkan.",
         technologies: ["React", "Vite", "Tailwind CSS", "JavaScript"],
         documentation: "/documentation/2audi.png",
         link: "https://2audiprinting.my.id/",
@@ -56,20 +71,12 @@ const sections: Section[] = [
         organization: "Corporate Website",
         period: "2026",
         description:
-          "Developed a corporate website for Qur'anic Corporate Forum (QCF), a platform focused on organizational culture, leadership, human resources, and digital transformation based on Qur'anic values.",
+          "Built the official website for Qur'anic Corporate Forum (QCF), highlighting its work in organizational culture, leadership, human resources, and digital transformation guided by Qur'anic values.",
+        descriptionId:
+          "Membangun situs resmi Qur'anic Corporate Forum (QCF) untuk memperkenalkan fokus organisasi pada budaya organisasi, kepemimpinan, SDM, dan transformasi digital berlandaskan nilai-nilai Al-Qur'an.",
         technologies: ["React", "Vite", "Tailwind CSS", "JavaScript"],
         documentation: "/documentation/qcf.png",
         link: "https://qurota.id/",
-      },
-      {
-        title: "Desafar",
-        organization: "Umrah Travel Website",
-        period: "2026",
-        description:
-          "Developed a landing page for an Umrah travel service, focusing on providing structured information about travel packages, facilities, and available services. The website features a modern, responsive, and user-friendly interface to help prospective pilgrims access information before registration.",
-        technologies: ["React", "Vite", "Tailwind CSS", "JavaScript"],
-        documentation: "/documentation/desafar.png",
-        link: "https://desafar.vercel.app/",
       },
     ],
   },
@@ -77,25 +84,35 @@ const sections: Section[] = [
   {
     key: "experience",
     title: "Experience",
+    titleId: "Pengalaman",
     subtitle:
-      "Professional experience, internships, and professional development programs.",
+      "Professional experience and learning programs that have shaped how I work and grow.",
+    subtitleId:
+      "Pengalaman profesional dan program pengembangan yang membentuk cara saya bekerja dan belajar.",
     icon: BriefcaseBusiness,
     items: [
       {
         title: "Internship Experience",
+        titleId: "Pengalaman Magang",
         organization: "Web Development & Information Systems",
+        organizationId: "Pengembangan Web & Sistem Informasi",
         period: "2025 — 2026",
         description:
-          "Contributed to the development and management of information systems, including supporting web application development, data processing, and digital administrative needs.",
+          "Contributed to the development and maintenance of information systems, including web application development, data processing, and digital administrative needs.",
+        descriptionId:
+          "Berkontribusi dalam pengembangan dan pengelolaan sistem informasi, termasuk mendukung pembuatan aplikasi web, pengolahan data, dan kebutuhan administrasi digital.",
         technologies: ["PHP", "Laravel", "MySQL", "Web Development"],
         documentation: "/documentation/magang.png",
       },
       {
         title: "Independent Study Program",
+        titleId: "Studi Independen",
         organization: "RevoU",
         period: "2024",
         description:
-          "Completed an Independent Study Program with RevoU, focusing on data analytics. Conducted end-to-end sales data analysis, including data cleaning, data processing, and visualization using Microsoft Excel and Power BI, resulting in data-driven insights and business recommendations.",
+          "Completed RevoU's Independent Study Program focused on data analytics. Analyzed sales data end to end—from cleaning and processing to visualization with Microsoft Excel and Power BI—and developed data-driven insights and recommendations.",
+        descriptionId:
+          "Menyelesaikan program Studi Independen RevoU dengan fokus analisis data. Mengerjakan analisis data penjualan dari pembersihan hingga visualisasi menggunakan Microsoft Excel dan Power BI, lalu menyusun insight serta rekomendasi berbasis data.",
         technologies: [
           "Data Analytics",
           "Microsoft Excel",
@@ -109,9 +126,12 @@ const sections: Section[] = [
 
   {
     key: "organization",
-    title: "Organization",
+    title: "Leadership & Organizations",
+    titleId: "Organisasi",
     subtitle:
-      "Organizational activities and collaborative experiences throughout my academic journey.",
+      "Experiences in collaboration, coordination, and community contribution throughout my studies.",
+    subtitleId:
+      "Pengalaman berkolaborasi, berkoordinasi, dan berkontribusi selama masa perkuliahan.",
     icon: Users,
     items: [
       {
@@ -119,7 +139,9 @@ const sections: Section[] = [
         organization: "Ikatan Mahasiswa Muhammadiyah Adam Malik",
         period: "2022 — 2024",
         description:
-          "Served as the secretary of the Immawati Division, supporting administrative tasks, documentation, activity coordination, and organizational management.",
+          "Served as secretary of the Immawati Division, supporting administration, documentation, activity coordination, and organizational operations.",
+        descriptionId:
+          "Menjalankan tugas sekretaris Divisi Immawati, termasuk mendukung administrasi, dokumentasi, koordinasi kegiatan, dan pengelolaan organisasi.",
         documentation: "/documentation/immawati.png",
       },
       {
@@ -127,7 +149,9 @@ const sections: Section[] = [
         organization: "Himpunan Mahasiswa Teknik Informatika UMS",
         period: "2022 — 2024",
         description:
-          "Contributed to organizational and student development activities within the Informatics Engineering student association, including supporting event implementation, member coordination, and divisional administrative needs.",
+          "Contributed to organizational activities and student development within UMS's Informatics Engineering student association, supporting events, member coordination, and divisional administration.",
+        descriptionId:
+          "Berkontribusi dalam kegiatan organisasi dan pengembangan mahasiswa di Himpunan Mahasiswa Teknik Informatika UMS, termasuk mendukung pelaksanaan acara, koordinasi anggota, dan administrasi divisi.",
         documentation: "/documentation/hmti.png",
       },
     ],
@@ -135,17 +159,23 @@ const sections: Section[] = [
 
   {
     key: "certification",
-    title: "Certification",
+    title: "Certifications",
+    titleId: "Sertifikasi",
     subtitle:
-      "Training programs and certifications completed to support my professional development.",
+      "Training and certifications that have supported my technical development.",
+    subtitleId:
+      "Pelatihan dan sertifikasi yang mendukung pengembangan kemampuan teknis saya.",
     icon: GraduationCap,
     items: [
       {
         title: "Back-End Programming",
         organization: "Solocom Education Institution",
         period: "Issued Aug 2024 · Expired Jan 2025",
+        periodId: "Terbit Agu 2024 · Kedaluwarsa Jan 2025",
         description:
-          "Completed a Back-End Programming training program organized by SOLOCOM, focusing on server-side web application development. The program covered the fundamentals and implementation of API development, database management, and backend logic for building efficient and structured systems.",
+          "Completed SOLOCOM's Back-End Programming training, focused on server-side web development. Topics included API fundamentals and implementation, database management, and backend logic for building structured systems.",
+        descriptionId:
+          "Menyelesaikan pelatihan Back-End Programming dari SOLOCOM dengan fokus pada pengembangan sisi server. Materi mencakup dasar dan penerapan API, pengelolaan basis data, serta logika backend untuk membangun sistem yang terstruktur.",
         technologies: ["Back-End", "API", "Database", "Web Development"],
         documentation: "/documentation/backend-solocom.png",
       },
@@ -154,7 +184,9 @@ const sections: Section[] = [
         organization: "Coursera",
         period: "Feb 2023",
         description:
-          "Completed an online project through the Coursera Project Network, focusing on Python programming fundamentals, including creating simple programs, working with variables, and applying basic programming logic in application development.",
+          "Completed a guided project through the Coursera Project Network covering Python fundamentals, from building simple programs and working with variables to applying basic programming logic.",
+        descriptionId:
+          "Menyelesaikan proyek daring melalui Coursera Project Network untuk mempelajari dasar Python, mulai dari membuat program sederhana dan menggunakan variabel hingga menerapkan logika pemrograman dasar.",
         technologies: ["Python", "Programming", "Coursera Project Network"],
         documentation: "/documentation/python-coursera.png",
         link: "https://www.coursera.org/account/accomplishments/verify/ZFCH7LFQHBDX",
@@ -164,6 +196,8 @@ const sections: Section[] = [
 ];
 
 function Work() {
+  const { language } = useLanguage();
+
   return (
     <section
       id="work"
@@ -181,21 +215,24 @@ function Work() {
         }}
       />
 
-      <div className="relative mx-auto max-w-[1440px] px-6 py-20 sm:px-8 lg:px-12 lg:py-28">
+      <div className="relative mx-auto max-w-[1440px] px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-28">
         {/* HEADER */}
         <div className="border-t border-[#171717]/15 pt-8">
-          <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#8A8783]">
-            Work
+          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#8A8783] sm:text-[11px] sm:tracking-[0.25em]">
+            {language === "id" ? "Portofolio" : "Portfolio"}
           </p>
 
-          <h2 className="mt-5 max-w-4xl font-display text-[clamp(3rem,6vw,5.8rem)] font-semibold leading-[.88] tracking-[-.07em]">
-            My work &<span className="block text-[#5C5A58]">journey.</span>
+          <h2 className="mt-5 max-w-4xl font-display text-[clamp(2.4rem,9vw,5.8rem)] font-semibold leading-[.92] tracking-[-.07em] sm:text-[clamp(3rem,6vw,5.8rem)] sm:leading-[.88]">
+            {language === "id" ? "Karya dan" : "Selected work &"}
+            <span className="block text-[#171717]">
+              {language === "id" ? "perjalanan." : "experience."}
+            </span>
           </h2>
 
-          <p className="mt-8 max-w-3xl text-sm leading-7 text-[#6B6966] sm:text-base">
-            A collection of projects, professional experiences, organizational
-            activities, and certifications that have shaped my journey in
-            technology and digital development.
+          <p className="mt-8 max-w-3xl text-[15px] leading-7 text-[#6B6966] sm:text-base">
+            {language === "id"
+              ? "Dari proyek web hingga pengalaman organisasi—setiap langkah memberi saya ruang untuk belajar, berkolaborasi, dan membuat solusi digital yang semakin bermanfaat."
+              : "From web projects to organizational roles, each experience has helped me learn, collaborate, and build more useful digital solutions."}
           </p>
         </div>
 
@@ -211,24 +248,24 @@ function Work() {
               >
                 {/* SECTION HEADER */}
                 <div className="mb-10 flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
-                  <div className="flex items-start gap-5">
+                  <div className="flex min-w-0 items-start gap-4 sm:gap-5">
                     <div className="flex h-12 w-12 shrink-0 items-center justify-center border border-[#171717]/10 bg-[#171717] text-white">
                       <Icon size={19} strokeWidth={1.5} />
                     </div>
 
-                    <div>
-                      <h3 className="font-display text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
-                        {section.title}
+                    <div className="min-w-0 flex-1">
+                      <h3 className="font-display text-2xl font-semibold tracking-[-0.03em] sm:text-4xl">
+                        {language === "id" ? section.titleId ?? section.title : section.title}
                       </h3>
 
-                      <p className="mt-2 max-w-2xl text-sm leading-6 text-[#77736F]">
-                        {section.subtitle}
+                      <p className="mt-2 max-w-2xl text-[15px] leading-6 text-[#77736F] sm:text-sm">
+                        {language === "id" ? section.subtitleId ?? section.subtitle : section.subtitle}
                       </p>
                     </div>
                   </div>
 
-                  <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#8A8783]">
-                    {String(section.items.length).padStart(2, "0")} Items
+                  <span className="self-end font-mono text-[10px] uppercase tracking-[0.12em] text-[#8A8783] sm:self-auto sm:text-[9px] sm:tracking-[0.2em]">
+                    {String(section.items.length).padStart(2, "0")} {language === "id" ? "entri" : "items"}
                   </span>
                 </div>
 
@@ -242,19 +279,19 @@ function Work() {
                       {/* LEFT CONTENT */}
                       <div className="min-w-0">
                         {/* Number */}
-                        <p className="font-mono text-[8px] uppercase tracking-[0.3em] text-[#8A8783]">
+                        <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#8A8783] sm:text-[9px] sm:tracking-[0.3em]">
                           {String(index + 1).padStart(2, "0")}
                         </p>
 
                         {/* Title + Period */}
                         <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
-                          <h4 className="font-display text-2xl font-semibold tracking-[-0.035em] sm:text-3xl">
-                            {item.title}
+                          <h4 className="font-display text-[22px] font-semibold tracking-[-0.035em] sm:text-3xl">
+                            {language === "id" ? item.titleId ?? item.title : item.title}
                           </h4>
 
                           {item.period && (
-                            <span className="shrink-0 font-mono text-[8px] uppercase tracking-[0.2em] text-[#8A8783] sm:text-right">
-                              {item.period}
+                            <span className="font-mono text-[10px] leading-5 uppercase tracking-[0.12em] text-[#77736F] sm:shrink-0 sm:text-[9px] sm:tracking-[0.2em] sm:text-right">
+                              {language === "id" ? item.periodId ?? item.period : item.period}
                             </span>
                           )}
                         </div>
@@ -262,7 +299,7 @@ function Work() {
                         {/* Organization */}
                         {item.organization && (
                           <p className="mt-2 text-sm text-[#77736F]">
-                            {item.organization}
+                            {language === "id" ? item.organizationId ?? item.organization : item.organization}
                           </p>
                         )}
 
@@ -273,7 +310,7 @@ function Work() {
                               {item.technologies.map((technology) => (
                                 <span
                                   key={technology}
-                                  className="border border-[#171717]/10 bg-[#F3F2F0] px-3 py-2 font-mono text-[8px] uppercase tracking-[0.12em] text-[#77736F]"
+                                  className="border border-[#171717]/10 bg-[#F3F2F0] px-3 py-2 font-mono text-[10px] uppercase tracking-[0.04em] text-[#555250] sm:text-[9px] sm:tracking-[0.12em]"
                                 >
                                   {technology}
                                 </span>
@@ -282,8 +319,8 @@ function Work() {
                           )}
 
                         {/* Description */}
-                        <p className="mt-6 max-w-3xl text-sm leading-7 text-[#5F5C59] sm:text-base">
-                          {item.description}
+                        <p className="mt-6 max-w-3xl text-[15px] leading-7 text-[#5F5C59] sm:text-base">
+                          {language === "id" ? item.descriptionId ?? item.description : item.description}
                         </p>
 
                         {/* Website Button */}
@@ -295,7 +332,7 @@ function Work() {
                               rel="noopener noreferrer"
                               className="inline-flex items-center gap-3 border border-[#171717]/20 bg-[#F3F2F0] px-5 py-3 text-sm font-medium text-[#171717] shadow-[0_2px_0_rgba(23,23,23,0.12)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-white hover:shadow-[0_4px_0_rgba(23,23,23,0.18)] active:translate-y-0"
                             >
-                              Visit Website
+                              {language === "id" ? "Kunjungi situs" : "Visit website"}
                               <ExternalLink size={15} strokeWidth={1.7} />
                             </a>
                           </div>
@@ -304,23 +341,23 @@ function Work() {
 
                       {/* DOCUMENTATION */}
                       <div className="lg:pt-7">
-                        <p className="mb-3 font-mono text-[8px] uppercase tracking-[0.2em] text-[#999591]">
-                          Documentation
+                        <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.12em] text-[#77736F] sm:text-[9px] sm:tracking-[0.2em]">
+                          {language === "id" ? "Dokumentasi" : "Documentation"}
                         </p>
 
                         {item.documentation ? (
                           <div className="w-full overflow-hidden border border-[#171717]/10 bg-white">
                             <img
                               src={item.documentation}
-                              alt={`${item.title} documentation`}
+                              alt={`${item.title} ${language === "id" ? "dokumentasi" : "documentation"}`}
                               loading="lazy"
                               className="block aspect-[4/3] h-auto w-full object-cover"
                             />
                           </div>
                         ) : (
                           <div className="flex aspect-[4/3] w-full items-center justify-center border border-[#171717]/10 bg-[#F3F2F0]">
-                            <span className="font-mono text-[8px] uppercase tracking-[0.15em] text-[#999591]">
-                              No documentation available
+                            <span className="font-mono text-[10px] uppercase tracking-[0.1em] text-[#77736F] sm:text-[9px] sm:tracking-[0.15em]">
+                              {language === "id" ? "Dokumentasi belum tersedia" : "Documentation not available"}
                             </span>
                           </div>
                         )}

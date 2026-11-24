@@ -7,15 +7,16 @@ import {
   Layout,
   Server,
 } from 'lucide-react'
+import { useLanguage } from '../LanguageContext'
 
 const skillGroups = [
   {
-    title: 'Programming',
+    title: { en: 'Programming', id: 'Pemrograman' },
     icon: Code2,
     skills: ['Python', 'PHP', 'JavaScript', 'TypeScript'],
   },
   {
-    title: 'Frontend',
+    title: { en: 'Frontend', id: 'Frontend' },
     icon: Layout,
     skills: [
       'HTML',
@@ -27,7 +28,7 @@ const skillGroups = [
     ],
   },
   {
-    title: 'Backend',
+    title: { en: 'Backend', id: 'Backend' },
     icon: Server,
     skills: [
       'Laravel',
@@ -39,12 +40,12 @@ const skillGroups = [
     ],
   },
   {
-    title: 'Database',
+    title: { en: 'Database', id: 'Basis Data' },
     icon: Database,
     skills: ['MySQL', 'SQL', 'Database Design', 'Data Modeling'],
   },
   {
-    title: 'Data & Analytics',
+    title: { en: 'Data & Analytics', id: 'Data & Analitik' },
     icon: BarChart3,
     skills: [
       'Python',
@@ -57,7 +58,7 @@ const skillGroups = [
     ],
   },
   {
-    title: 'Tools & Workflow',
+    title: { en: 'Tools & Workflow', id: 'Tools & Alur Kerja' },
     icon: GitBranch,
     skills: ['Git', 'GitHub', 'Vite', 'VS Code', 'Vercel', 'npm'],
   },
@@ -76,6 +77,8 @@ function Hexagon({ className = '' }: { className?: string }) {
 }
 
 function Skills() {
+  const { language } = useLanguage()
+
   return (
     <section
       id="skills"
@@ -99,7 +102,7 @@ function Skills() {
         <Hexagon className="right-[-120px] bottom-[5%] h-[330px] w-[380px]" />
       </div>
 
-      <div className="relative mx-auto max-w-[1440px] px-6 py-20 sm:px-8 lg:px-12 lg:py-28">
+      <div className="relative mx-auto max-w-[1440px] px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-28">
 
         {/* Header */}
         <motion.div
@@ -108,21 +111,21 @@ function Skills() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#8A8783]">
-            Technical Skills
+          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#8A8783] sm:text-[11px] sm:tracking-[0.25em]">
+            {language === 'id' ? 'Keahlian' : 'Technical Skills'}
           </p>
 
-          <h2 className="mt-5 max-w-4xl font-display text-[clamp(3rem,6vw,5.8rem)] font-semibold leading-[.88] tracking-[-.07em]">
-            Tools I use
-            <span className="block text-[#5C5A58]">
-              to build & analyze.
+          <h2 className="mt-5 max-w-4xl font-display text-[clamp(2.4rem,9vw,5.8rem)] font-semibold leading-[.92] tracking-[-.07em] sm:text-[clamp(3rem,6vw,5.8rem)] sm:leading-[.88]">
+            {language === 'id' ? 'Bekal untuk' : 'Tools I use'}
+            <span className="block text-[#171717]">
+              {language === 'id' ? 'membangun & menganalisis.' : 'to build & analyze.'}
             </span>
           </h2>
 
-          <p className="mt-7 max-w-2xl text-sm leading-7 text-[#6B6966] sm:text-base">
-            A collection of technologies, tools, and technical
-            capabilities I use to develop digital products and
-            work with data.
+          <p className="mt-7 max-w-2xl text-[15px] leading-7 text-[#6B6966] sm:text-base">
+            {language === 'id'
+              ? 'Teknologi dan tools yang saya gunakan untuk mengembangkan produk digital serta mengolah data—dengan fokus pada solusi yang fungsional dan mudah dipahami.'
+              : 'The technologies and tools I use to build digital products and work with data—with a focus on practical, easy-to-understand solutions.'}
           </p>
         </motion.div>
 
@@ -133,7 +136,7 @@ function Skills() {
 
             return (
               <motion.div
-                key={group.title}
+                key={group.title.en}
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -150,7 +153,7 @@ function Skills() {
                   </div>
 
                   <h3 className="font-display text-base font-semibold">
-                    {group.title}
+                    {group.title[language]}
                   </h3>
                 </div>
 
@@ -159,7 +162,7 @@ function Skills() {
                   {group.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="border border-[#D1CFCC] bg-white px-3 py-2 font-mono text-[8px] uppercase tracking-[0.06em] text-[#55524F] transition-colors duration-300 hover:border-[#171717] hover:text-[#171717]"
+                      className="border border-[#D1CFCC] bg-white px-3 py-2 font-mono text-[10px] uppercase tracking-[0.04em] text-[#55524F] transition-colors duration-300 hover:border-[#171717] hover:text-[#171717] sm:text-[9px] sm:tracking-[0.06em]"
                     >
                       {skill}
                     </span>
@@ -172,12 +175,12 @@ function Skills() {
 
         {/* Footer */}
         <div className="mt-7 flex items-center justify-between">
-          <span className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#999591]">
-            Technical capabilities
+          <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#999591] sm:text-[9px] sm:tracking-[0.2em]">
+            {language === 'id' ? 'Ringkasan keahlian' : 'Technical capabilities'}
           </span>
 
-          <span className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#999591]">
-            03 / 07
+          <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#999591] sm:text-[9px] sm:tracking-[0.2em]">
+            {language === 'id' ? '06 kategori' : '06 categories'}
           </span>
         </div>
 

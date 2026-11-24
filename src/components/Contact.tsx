@@ -5,6 +5,7 @@ import {
   FaInstagram,
   FaLinkedinIn,
 } from 'react-icons/fa6'
+import { useLanguage } from '../LanguageContext'
 
 const contacts = [
   {
@@ -34,18 +35,19 @@ const contacts = [
 ]
 
 function Contact() {
-  const [copied, setCopied] = useState(false)
+  const [copiedContact, setCopiedContact] = useState<string | null>(null)
+  const { language } = useLanguage()
 
   const copyText = async (value: string) => {
     try {
       await navigator.clipboard.writeText(value)
-      setCopied(true)
+      setCopiedContact(value)
 
       setTimeout(() => {
-        setCopied(false)
+        setCopiedContact(null)
       }, 1800)
     } catch {
-      setCopied(false)
+      setCopiedContact(null)
     }
   }
 
@@ -66,24 +68,25 @@ function Contact() {
         }}
       />
 
-      <div className="relative mx-auto max-w-[1440px] px-6 py-20 sm:px-8 lg:px-12 lg:py-28">
+      <div className="relative mx-auto max-w-[1440px] px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-28">
 
         {/* Header */}
         <div>
-          <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#8A8783]">
-            Contact
+          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#8A8783] sm:text-[11px] sm:tracking-[0.25em]">
+            {language === 'id' ? 'Kontak' : 'Contact'}
           </p>
 
-          <h2 className="mt-5 max-w-4xl font-display text-[clamp(3rem,6vw,5.8rem)] font-semibold leading-[.88] tracking-[-.07em]">
-            Let&apos;s connect
-            <span className="block text-[#5C5A58]">
-              and build something.
+          <h2 className="mt-5 max-w-4xl font-display text-[clamp(2.4rem,9vw,5.8rem)] font-semibold leading-[.92] tracking-[-.07em] sm:text-[clamp(3rem,6vw,5.8rem)] sm:leading-[.88]">
+            {language === 'id' ? 'Punya ide?' : 'Have an idea?'}
+            <span className="block text-[#171717]">
+              {language === 'id' ? 'Mari wujudkan bersama.' : "Let's bring it to life."}
             </span>
           </h2>
 
-          <p className="mt-8 max-w-3xl text-sm leading-7 text-[#6B6966] sm:text-base">
-            Have a project, opportunity, or collaboration in mind?
-            Feel free to reach out.
+          <p className="mt-8 max-w-3xl text-[15px] leading-7 text-[#6B6966] sm:text-base">
+            {language === 'id'
+              ? 'Saya terbuka untuk peluang kerja, kolaborasi, maupun obrolan seputar pengembangan web dan data. Silakan hubungi saya lewat kanal berikut.'
+              : "I'm open to new opportunities, collaborations, and conversations about web development and data. Feel free to reach out through any of the channels below."}
           </p>
         </div>
 
@@ -98,7 +101,7 @@ function Contact() {
                 className="group flex min-w-0 items-center gap-3 border border-[#171717]/10 bg-white/60 px-3.5 py-3 transition-transform duration-200 hover:-translate-y-1"
               >
                 {/* Icon */}
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center border border-[#171717]/10 bg-[#F3F2F0] text-[#555250]">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center border border-[#171717]/10 bg-[#F3F2F0] text-[#555250]">
                   <Icon size={15} />
                 </div>
 
@@ -121,8 +124,22 @@ function Contact() {
                     {contact.label}
                   </p>
 
-                  <p className="mt-0.5 truncate font-mono text-[8px] text-[#999591]">
-                    {contact.value}
+                  <p
+                    className={`mt-0.5 font-mono leading-4 text-[#77736F] ${
+                      contact.label === 'Email'
+                        ? 'text-[9px] sm:text-[10px]'
+                        : 'text-[10px]'
+                    }`}
+                  >
+                    {contact.label === 'Email' ? (
+                      <>
+                        {contact.value.slice(0, contact.value.indexOf('@'))}
+                        <wbr />
+                        {contact.value.slice(contact.value.indexOf('@'))}
+                      </>
+                    ) : (
+                      contact.value
+                    )}
                   </p>
                 </a>
 
@@ -130,10 +147,18 @@ function Contact() {
                 <button
                   type="button"
                   onClick={() => copyText(contact.value)}
-                  aria-label={`Copy ${contact.label}`}
-                  className="flex h-7 w-7 shrink-0 items-center justify-center text-[#999591] transition-colors hover:text-[#171717]"
+                  aria-label={
+                    copiedContact === contact.value
+                      ? language === 'id'
+                        ? `${contact.label} berhasil disalin`
+                        : `${contact.label} copied`
+                      : language === 'id'
+                        ? `Salin ${contact.label}`
+                        : `Copy ${contact.label}`
+                  }
+                  className="flex h-10 w-10 shrink-0 items-center justify-center text-[#77736F] transition-colors hover:text-[#171717]"
                 >
-                  {copied ? (
+                  {copiedContact === contact.value ? (
                     <Check size={13} />
                   ) : (
                     <Copy size={13} />
@@ -153,8 +178,8 @@ function Contact() {
                 Safridha Audi
               </p>
 
-              <p className="mt-1 font-mono text-[8px] uppercase tracking-[0.16em] text-[#999591]">
-                Informatics Engineer
+              <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.12em] text-[#77736F] sm:text-[9px] sm:tracking-[0.16em]">
+                {language === 'id' ? 'Pengembang Web & Analis Data' : 'Web Developer & Data Analyst'}
               </p>
             </div>
 
