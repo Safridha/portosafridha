@@ -14,6 +14,8 @@ type Item = {
   organizationId?: string;
   period?: string;
   periodId?: string;
+  location?: string;
+  locationId?: string;
   description: string;
   descriptionId?: string;
   technologies?: string[];
@@ -42,6 +44,19 @@ const sections: Section[] = [
       "Aplikasi dan situs web yang saya kerjakan untuk menjawab kebutuhan nyata, dari sistem informasi hingga landing page.",
     icon: FolderOpen,
     items: [
+      {
+        title: "4Connectivity",
+        organization: "PT PAL Indonesia (Persero)",
+        organizationId: "PT PAL Indonesia (Persero)",
+        period: "Sep 2026 — Present",
+        periodId: "Sep 2026 — Saat ini",
+        description:
+          "Contributing to an internal web platform by developing application modules and APIs, real-time updates and notifications, and supporting service integrations for image optimization, data exports, and PDF generation. Working across modules with different workflows and access requirements.",
+        descriptionId:
+          "Berkontribusi pada platform web internal dengan mengembangkan modul aplikasi dan API, pembaruan status serta notifikasi real-time, dan integrasi layanan pendukung untuk optimasi gambar, ekspor data, dan pembuatan PDF. Menangani integrasi antar-modul dengan alur kerja dan kebutuhan akses yang berbeda.",
+        technologies: ["Laravel", "React", "TypeScript", "PostgreSQL", "Redis", "Rust"],
+        link: "https://4connectivity.my.id/",
+      },
       {
         title: "BPKPAD Administration System",
         organization: "BPKPAD",
@@ -92,17 +107,18 @@ const sections: Section[] = [
     icon: BriefcaseBusiness,
     items: [
       {
-        title: "Internship Experience",
-        titleId: "Pengalaman Magang",
-        organization: "Web Development & Information Systems",
-        organizationId: "Pengembangan Web & Sistem Informasi",
-        period: "2025 — 2026",
+        title: "Computer Programming Intern",
+        titleId: "Pemrograman Komputer (Magang)",
+        organization: "PT PAL Indonesia (Persero)",
+        period: "Sep 2026 — Present",
+        periodId: "Sep 2026 — Saat ini",
+        location: "Surabaya, East Java, Indonesia · On-site",
+        locationId: "Surabaya, Jawa Timur, Indonesia · Di lokasi",
         description:
-          "Contributed to the development and maintenance of information systems, including web application development, data processing, and digital administrative needs.",
+          "Developing features for an internal web platform, building APIs, and integrating supporting services. Implementing real-time updates and collaborating across modules with different workflows and access requirements.",
         descriptionId:
-          "Berkontribusi dalam pengembangan dan pengelolaan sistem informasi, termasuk mendukung pembuatan aplikasi web, pengolahan data, dan kebutuhan administrasi digital.",
-        technologies: ["PHP", "Laravel", "MySQL", "Web Development"],
-        documentation: "/documentation/magang.png",
+          "Mengembangkan fitur platform web internal, membangun API, dan mengintegrasikan layanan pendukung. Menerapkan pembaruan real-time serta berkolaborasi menangani modul dengan alur kerja dan kebutuhan akses yang berbeda.",
+        technologies: ["Laravel", "React", "TypeScript", "PostgreSQL", "Redis", "Rust"],
       },
       {
         title: "Independent Study Program",
@@ -300,6 +316,11 @@ function Work() {
                         {item.organization && (
                           <p className="mt-2 text-sm text-[#77736F]">
                             {language === "id" ? item.organizationId ?? item.organization : item.organization}
+                          </p>
+                        )}
+                        {item.location && (
+                          <p className="mt-1 text-xs text-[#77736F]">
+                            {language === "id" ? item.locationId ?? item.location : item.location}
                           </p>
                         )}
 
