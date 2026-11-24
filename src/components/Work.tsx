@@ -151,16 +151,6 @@ const sections: Section[] = [
     icon: Users,
     items: [
       {
-        title: "Secretary of the Immawati Division",
-        organization: "Ikatan Mahasiswa Muhammadiyah Adam Malik",
-        period: "2022 — 2024",
-        description:
-          "Served as secretary of the Immawati Division, supporting administration, documentation, activity coordination, and organizational operations.",
-        descriptionId:
-          "Menjalankan tugas sekretaris Divisi Immawati, termasuk mendukung administrasi, dokumentasi, koordinasi kegiatan, dan pengelolaan organisasi.",
-        documentation: "/documentation/immawati.png",
-      },
-      {
         title: "Cadre Development Division Staff",
         organization: "Himpunan Mahasiswa Teknik Informatika UMS",
         period: "2022 — 2024",

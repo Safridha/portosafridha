@@ -79,8 +79,9 @@ function Hero() {
             className="relative z-10"
           >
             <p className="mb-5 font-mono text-[10px] uppercase tracking-[0.18em] text-[#555250] sm:text-xs sm:tracking-[0.24em]">
-              {language === 'id' ? 'TEKNIK INFORMATIKA' : 'INFORMATICS ENGINEERING'}{' '}
-              <span className="text-[#AAA8A4]">/</span> WEB & DATA
+              {language === 'id' ? 'PENGEMBANG WEB' : 'WEB DEVELOPER'}{' '}
+              <span className="text-[#AAA8A4]">/</span>{' '}
+              {language === 'id' ? 'ANALIS DATA' : 'DATA ANALYST'}
             </p>
 
             {/* Main Title */}
@@ -94,8 +95,8 @@ function Hero() {
             {/* Description */}
             <p className="mt-7 max-w-[590px] text-[15px] leading-7 text-[#666360] sm:text-base">
               {language === 'id'
-                ? 'Saya lulusan Teknik Informatika yang senang mengubah kebutuhan menjadi aplikasi web yang mudah digunakan—serta mengolah data menjadi insight yang membantu pengambilan keputusan.'
-                : "I'm an Informatics Engineering graduate who enjoys turning real needs into intuitive web applications—and transforming data into insights that support better decisions."}
+                ? 'Saya membangun aplikasi web yang mudah digunakan dan mengolah data menjadi insight yang membantu pengambilan keputusan.'
+                : 'I build intuitive web applications and turn data into insights that support better decisions.'}
             </p>
 
             <div className="mt-7 flex flex-wrap gap-3">
