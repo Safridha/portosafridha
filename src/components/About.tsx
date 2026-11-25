@@ -94,19 +94,19 @@ function About() {
               Safridha Audi
             </strong>
             {language === 'id'
-              ? ', lulusan Teknik Informatika yang tertarik pada '
-              : ', an Informatics Engineering graduate interested in '}
+              ? ', lulusan Teknik Informatika yang berfokus pada '
+              : ', an Informatics Engineering graduate focused on '}
             <strong className="font-semibold text-[#171717]">
               {language === 'id'
-                ? 'pengembangan web, full-stack, dan analisis data.'
-                : 'web development, full-stack engineering, and data analytics.'}
+                ? 'pengembangan web full-stack.'
+                : 'full-stack web development.'}
             </strong>
           </p>
 
           <p className="mt-5 max-w-3xl text-sm leading-7 text-[#6B6966] sm:text-base">
             {language === 'id'
-              ? 'Saya menikmati proses merancang aplikasi web, membangun pengalaman digital yang intuitif, dan menggali insight dari data. Bagi saya, solusi yang baik bukan hanya berjalan—tetapi juga jelas, relevan, dan benar-benar membantu penggunanya.'
-              : 'I enjoy designing web applications, creating intuitive digital experiences, and uncovering insights in data. To me, a good solution does more than work—it should be clear, relevant, and genuinely useful to the people who use it.'}
+              ? 'Saya menikmati proses membangun aplikasi web yang intuitif, mulai dari antarmuka hingga integrasi API dan basis data. Saya juga memiliki kemampuan analisis data sebagai keterampilan tambahan. Bagi saya, solusi yang baik bukan hanya berjalan—tetapi juga jelas, relevan, dan membantu penggunanya.'
+              : 'I enjoy building intuitive web applications, from their interfaces to API and database integrations. I also bring data analysis as a complementary skill. To me, a good solution does more than work—it should be clear, relevant, and useful to the people who use it.'}
           </p>
 
           <p className="mt-3 max-w-3xl text-sm leading-7 text-[#6B6966] sm:text-base">

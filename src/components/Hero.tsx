@@ -3,9 +3,9 @@ import { ArrowDown, ArrowRight, Code2, Database, Layers3 } from 'lucide-react'
 import { useLanguage } from '../LanguageContext'
 
 const specialties = [
-  { icon: Code2, label: 'WEB DEVELOPMENT', labelId: 'PENGEMBANGAN WEB' },
-  { icon: Layers3, label: 'FULL-STACK', labelId: 'FULL-STACK' },
-  { icon: Database, label: 'DATA ANALYTICS', labelId: 'ANALISIS DATA' },
+  { icon: Code2, label: 'FRONT-END', labelId: 'FRONT-END' },
+  { icon: Layers3, label: 'BACK-END', labelId: 'BACK-END' },
+  { icon: Database, label: 'API & DATABASE', labelId: 'API & BASIS DATA' },
 ]
 
 function Hexagon({ className = '' }: { className?: string }) {
@@ -86,15 +86,15 @@ function Hero() {
             <h1 className="max-w-3xl font-display text-[clamp(2rem,8vw,3rem)] font-semibold leading-[1.02] tracking-[-.05em] sm:text-[clamp(3.2rem,6vw,5.5rem)] sm:leading-[1.02]">
               {language === 'id' ? 'Pengembang Web' : 'Web Developer'}
               <span className="mt-1 block text-[#171717]">
-                & {language === 'id' ? 'Analis Data.' : 'Data Analyst.'}
+                Full-Stack.
               </span>
             </h1>
 
             {/* Description */}
             <p className="mt-6 max-w-[590px] text-[15px] leading-7 text-[#666360] sm:text-base">
               {language === 'id'
-                ? 'Lulusan Teknik Informatika yang tertarik pada pengembangan web full-stack dan analisis data. Saya senang membangun aplikasi yang intuitif serta mengolah data menjadi insight yang mudah dipahami.'
-                : 'An Informatics Engineering graduate interested in full-stack web development and data analytics. I enjoy building intuitive applications and turning data into clear, useful insights.'}
+                ? 'Lulusan Teknik Informatika yang fokus membangun aplikasi web full-stack yang intuitif dan responsif. Saya juga memiliki kemampuan analisis data sebagai keahlian pendukung.'
+                : 'An Informatics Engineering graduate focused on building intuitive, responsive full-stack web applications. I also bring data analysis skills as a complementary strength.'}
             </p>
 
             <div className="mt-7 flex flex-wrap gap-3">
